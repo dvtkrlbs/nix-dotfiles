@@ -77,7 +77,7 @@
     nixosConfigurations = {
       n-wsl = nixpkgs.lib.nixOsSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs ;};
         modules = [
           ./hosts/wsl/beast.nix
         ];
@@ -87,28 +87,30 @@
     darwinConfigurations = {
       "mba" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/darwin/mba.nix
+          inputs.home-manager.darwinModules.home-manager
+          { home-manager.users.dvtkrlbs = import ./home-manager/home-mba.nix; }
         ];
       };
     };
 
-    homeConfigurations = {
-      "dvtkrlbs@mba" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home-manager/home-mba.nix
-        ];
-      };
-      "david@beast" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home-manager/home-beast.nix
-        ];
-      };
-    };
+    # homeConfigurations = {
+    #   "dvtkrlbs@mba" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+    #     extraSpecialArgs = {inherit inputs ;};
+    #     modules = [
+    #       ./home-manager/home-mba.nix
+    #     ];
+    #   };
+    #   "david@beast" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+    #     extraSpecialArgs = {inherit inputs outputs;};
+    #     modules = [
+    #       ./home-manager/home-beast.nix
+    #     ];
+    #   };
+    # };
   };
 }
