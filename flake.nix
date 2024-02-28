@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
 
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
@@ -18,9 +19,19 @@
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-wsl.url = "github:nix-community/nixos-wsl";
+    nixos-wsl.follows = "nixpkgs";
+
     # TODO: Add any other flake you might need
-    hardware.url = "github:nixos/nixos-hardware";
+    hw.url = "github:nixos/nixos-hardware";
     # nix-colors.url = "github:misterio77/nix-colors";
+
+    fenix = {
+      url = "https://flakehub.com/f/nix-community/fenix/0.1.1762.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     # nix-relic.url = "github:DavSanchez/Nix-Relic";
     # nix-relic.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +40,7 @@
     ## NixVim
     # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
     # url = "github:nix-community/nixvim/nixos-23.05";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "https://flakehub.com/f/nix-community/nixvim/0.1.918.tar.gz";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
@@ -81,6 +92,26 @@
 
     #   };
     # };
+    nixosConfigurations = {
+      "beast-wsl" = nixpkgs.lib.nixOsSystem {
+        hostname = "besat";
+        username = "dvtkrlbs";
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          inputs.nixos-wsl.nixosModules.wsl
+          ./hosts/wsl/beast.nix
+          inputs.home-manager.nixosModules.home-manager
+          { home-manager.users.dvtkrlbs = {
+              imports = [
+                inputs.nixvim.homeManagerModules.nixvim
+                ./home-manager/home-beast-wsl.nix
+              ];
+            };
+          }
+        ];
+      };
+    };
 
     darwinConfigurations = {
       "mba" = darwin.lib.darwinSystem {

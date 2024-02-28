@@ -101,14 +101,14 @@
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
-  services = {
-    nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
-    tailscale = {
-      enable = false; # Using App Store application for the moment
-      overrideLocalDns = false;
-    };
-  };
-  networking.hostName = "Tunas-MacBook";
+  # services = {
+    # nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
+    # tailscale = {
+      # enable = false; # Using App Store application for the moment
+      # overrideLocalDns = false;
+    # };
+  # };
+  networking.hostName = "beat-wsl";
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
@@ -127,106 +127,10 @@
   users.users = {
     dvtkrlbs = {
       name = "dvtkrlbs";
-      home = "/Users/dvtkrlbs";
+      home = "/home/dvtkrlbs";
     };
   };
 
-  homebrew = {
-    enable = true;
-    global.brewfile = true;
-    # onActivation.autoUpdate = true;
-    # onActivation.upgrade = true; # This defaults to false so calls are idempotent.
-    # onActivation.cleanup = "zap";
-
-    taps = [
-      # "homebrew/cask-drivers" # for qFlipper
-    ];
-    casks = [
-      "arq"
-    #   "adobe-acrobat-reader"
-    #   "amethyst"
-    #   "bartender"
-    #   "brave-browser"
-    #   "crossover"
-    #   "discord"
-    #   "disk-inventory-x"
-    #   "firefox"
-    #   "gqrx"
-    #   "handbrake"
-    #   "imhex"
-    #   "insomnia"
-    #   "keymapp"
-    #   "krita"
-    #   "little-snitch"
-    #   "logseq"
-    #   "maccy"
-    #   "openemu"
-    #   "openra"
-    #   "proton-drive"
-    #   "protonmail-bridge"
-    #   "protonvpn"
-    #   "qflipper"
-    #   "raycast"
-    #   "remarkable"
-    #   "secretive"
-    #   "sonic-pi"
-    #   "stats"
-    #   "steam"
-    #   "synthesia"
-    #   "tor-browser"
-    #   "transmission"
-    #   "vlc"
-    #   "whatsapp"
-    #   "wireshark"
-    #   "xld"
-    #   "xquartz" # X11 applications on macOS
-    #   "yacreader"
-    #   "zed"
-    #   "zerotier-one"
-    ];
-    brews = [
-      "mas"
-    ];
-    masApps = {
-    #   "1Blocker" = 1365531024;
-    #   "Amphetamine" = 937984704;
-    #   "Hush" = 1544743900;
-    #   "iMovie" = 408981434;
-      "Keynote" = 409183694;
-    #   "Logic Pro" = 634148309;
-    #   "MainStage" = 634159523;
-      "Microsoft Remote Desktop" = 1295203466;
-      "Numbers" = 409203825;
-    #   "one sec" = 1532875441;
-      "Pages" = 409201541;
-      "Tailscale" = 1475387142;
-    #   "Reeder" = 1529448980;
-    #   "Shazam" = 897118787;
-    #   "The Unarchiver" = 425424353;
-      # "UTM" = 1538878817;
-      "Xcode" = 497799835;
-    };
-    # extraConfig = '' '';
-    # whalebrews = [ ];
-  };
-
-  ## Other configs
-  # Enable sudo authentication with Touch ID
-  security.pam.enableSudoTouchIdAuth = true;
-
-  system.defaults.dock.autohide = true;
-  # system.defaults.dock.mru-spaces = false;
-  # system.defaults.dock.orientation = "left";
-  # # system.defaults.dock.showhidden = true;
-  system.defaults.finder.AppleShowAllExtensions = true;
-  # system.defaults.finder.AppleShowAllFiles = true;
-  system.defaults.finder.ShowPathbar = true;
-  system.defaults.finder.ShowStatusBar = true;
-  # # system.keyboard.enableKeyMapping = true;
-  # # system.keyboard.remapCapsLockToControl = true;
-  # system.defaults.magicmouse.MouseButtonMode = "TwoButton";
-
-  fonts.fontDir.enable = true;
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
