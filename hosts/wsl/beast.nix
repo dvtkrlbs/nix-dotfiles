@@ -52,12 +52,18 @@
       auto-optimise-store = true;
     };
     extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
-      extra-platforms = x86_64-darwin aarch64-darwin
+      extra-platforms = x86_64-darwin aarch64-darwin;
     '';
     gc = {
       automatic = true;
-      interval = { Day = 7; };
     };
+  };
+
+  boot.isContainer = true;
+
+  fileSystems."/" = {
+    fsType = "ext4";
+    device = "sdf";
   };
 
   environment = {
@@ -65,27 +71,20 @@
     # $ nix-env -qaP | grep wget
     systemPackages = with pkgs; [
       vim
-      inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
-      (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
+      (inputs.fenix.packages.x86_64-linux.complete.withComponents [
         "cargo"
         "clippy"
         "rust-src"
         "rustc"
         "rustfmt"
       ])
-      inputs.fh.packages.aarch64-darwin.default
+      inputs.fh.packages.x86_64-linux.default
       # rust-analyzer-nightly
     ];
     # shells = with pkgs; [
     #   zsh
     #   bashInteractive
     # ];
-    systemPath = [
-      "${config.homebrew.brewPrefix}/sbin"
-    ];
-    variables = {
-      FPATH = "${(config.homebrew.brewPrefix)}/share/zsh/site-functions:$FPATH";
-    };
 
     # # see nix.registry and nix.nixPath above
     # etc =
@@ -114,18 +113,18 @@
   programs = {
     zsh = {
       enable = true; # default shell on Catalina+
-      enableFzfCompletion = true;
-      enableFzfGit = true;
+#      enableFzfCompletion = true;
+#      enableFzfGit = true;
     };
     # fish.enable = true;
     bash = {
-      enable = true;
       enableCompletion = true;
     };
   };
 
   users.users = {
     dvtkrlbs = {
+      isNormalUser = true;
       name = "dvtkrlbs";
       home = "/home/dvtkrlbs";
     };
@@ -134,5 +133,5 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = "23.11";
 }

@@ -50,7 +50,7 @@
 
   home = {
     username = "dvtkrlbs";
-    homeDirectory = "/Users/dvtkrlbs";
+    homeDirectory = "/home/dvtkrlbs";
   };
 
   # Add stuff for your user as you see fit:

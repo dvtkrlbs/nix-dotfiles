@@ -20,7 +20,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-wsl.url = "github:nix-community/nixos-wsl";
-    nixos-wsl.follows = "nixpkgs";
+    nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
     hw.url = "github:nixos/nixos-hardware";
@@ -94,8 +94,6 @@
     # };
     nixosConfigurations = {
       "beast-wsl" = nixpkgs.lib.nixosSystem {
-        hostname = "besat";
-        username = "dvtkrlbs";
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
