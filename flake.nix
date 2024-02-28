@@ -93,7 +93,7 @@
     #   };
     # };
     nixosConfigurations = {
-      "beast-wsl" = nixpkgs.lib.nixOsSystem {
+      "beast-wsl" = nixpkgs.lib.nixosSystem {
         hostname = "besat";
         username = "dvtkrlbs";
         system = "x86_64-linux";

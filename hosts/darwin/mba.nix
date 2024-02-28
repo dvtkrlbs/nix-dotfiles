@@ -65,7 +65,7 @@
     # $ nix-env -qaP | grep wget
     systemPackages = with pkgs; [
       vim
-      inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
+      # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
         "cargo"
         "clippy"

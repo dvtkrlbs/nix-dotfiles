@@ -347,6 +347,9 @@
         "fh": "fh",
         "home-manager": "home-manager",
         "hw": "hw",
+        "nixos-wsl": [
+          "nixpkgs"
+        ],
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixvim": "nixvim"
