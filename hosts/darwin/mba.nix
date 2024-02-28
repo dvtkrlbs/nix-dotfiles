@@ -4,12 +4,12 @@
   pkgs,
   config,
   lib,
-  inputs,
-  # outputs,
+  # inputs,
   ...
 }: {
   # You can import other nix-darwin modules here
   imports = [
+
     # If you want to use modules your own flake exports (from modules/darwin):
     # outputs.darwinModules.example
 
@@ -24,39 +24,23 @@
     # ./common/sketchybar.nix
   ];
 
-  # nixpkgs = {
-  #   # You can add overlays here
-  #   overlays = [
-  #     # If you want to use overlays your own flake exports (from overlays dir):
-  #     outputs.overlays.additions
-  #     outputs.overlays.stable-packages
-  #     outputs.overlays.modifications
 
-  #     # Or overlays exported from other flakes:
-  #     # neovim-nightly-overlay.overlays.default
-
-  #     # Or define it inline, for example:
-  #     # (final: prev: {
-  #     #   hi = final.hello.overrideAttrs (oldAttrs: {
-  #     #     patches = [ ./change-hello-to-hi.patch ];
-  #     #   });
-  #     # })
-  #   ];
-  #   # Configure your nixpkgs instance
-  #   config = {
-  #     # Disable if you don't want unfree packages
-  #     allowUnfree = true;
-  #   };
-  # };
+  nixpkgs = {
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+    };
+  };
 
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+    # registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
-    nixPath = ["/etc/nix/path"];
+    # nixPath = ["/etc/nix/path"];
 
     package = pkgs.nixVersions.unstable;
 
@@ -65,7 +49,7 @@
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
-      auto-optimise-store = false;
+      auto-optimise-store = true;
     };
     extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
       extra-platforms = x86_64-darwin aarch64-darwin
@@ -93,14 +77,14 @@
       FPATH = "${(config.homebrew.brewPrefix)}/share/zsh/site-functions:$FPATH";
     };
 
-    # see nix.registry and nix.nixPath above
-    etc =
-      lib.mapAttrs'
-      (name: value: {
-        name = "nix/path/${name}";
-        value.source = value.flake;
-      })
-      config.nix.registry;
+    # # see nix.registry and nix.nixPath above
+    # etc =
+    #   lib.mapAttrs'
+    #   (name: value: {
+    #     name = "nix/path/${name}";
+    #     value.source = value.flake;
+    #   })
+    #   config.nix.registry;
   };
 
   # Use a custom configuration.nix location.
@@ -140,9 +124,9 @@
   homebrew = {
     enable = true;
     global.brewfile = true;
-    onActivation.autoUpdate = true;
-    onActivation.upgrade = true; # This defaults to false so calls are idempotent.
-    onActivation.cleanup = "zap";
+    # onActivation.autoUpdate = true;
+    # onActivation.upgrade = true; # This defaults to false so calls are idempotent.
+    # onActivation.cleanup = "zap";
 
     taps = [
       # "homebrew/cask-drivers" # for qFlipper

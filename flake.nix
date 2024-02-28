@@ -41,7 +41,7 @@
     darwin,
     ...
   } @ inputs: let
-    inherit (self) outputs;
+    # inherit (self) outputs;
     supportedSystems = [
       "aarch64-darwin"
       "x86_64-linux"
@@ -74,15 +74,13 @@
 
     templates = import ./templates;
 
-    nixosConfigurations = {
-      n-wsl = nixpkgs.lib.nixOsSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs ;};
-        modules = [
-          ./hosts/wsl/beast.nix
-        ];
-      };
-    };
+    # nixosConfigurations = {
+    #   n-wsl = nixpkgs.lib.nixOsSystem {
+    #     system = "x86_64-linux";
+    #     specialArgs = {inherit inputs ;};
+
+    #   };
+    # };
 
     darwinConfigurations = {
       "mba" = darwin.lib.darwinSystem {
@@ -91,7 +89,14 @@
         modules = [
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
-          { home-manager.users.dvtkrlbs = import ./home-manager/home-mba.nix; }
+          # inputs.nixvim.homeManagerModules.nixvim
+          { home-manager.users.dvtkrlbs = {
+              imports = [
+                inputs.nixvim.homeManagerModules.nixvim
+                ./home-manager/home-mba.nix
+              ];
+            };
+          }
         ];
       };
     };
@@ -104,6 +109,7 @@
     #       ./home-manager/home-mba.nix
     #     ];
     #   };
+    # };
     #   "david@beast" = home-manager.lib.homeManagerConfiguration {
     #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
     #     extraSpecialArgs = {inherit inputs outputs;};

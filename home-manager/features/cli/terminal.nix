@@ -10,6 +10,7 @@
     hyperfine
     tokei
     erdtree # File-tree visualizer and disk usage analyzer
+    ripgrep
 
     ## Other
     rmlint # Extremely fast tool to remove duplicates and other lint from your filesystem

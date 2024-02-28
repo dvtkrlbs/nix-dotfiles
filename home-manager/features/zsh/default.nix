@@ -62,55 +62,55 @@
     #     ];
     # };
 
-    prezto = {
-      enable = false;
-      # caseSensitive = true;
-      utility.safeOps = true;
-      editor.keymap = "vi";
-      pmodules =
-        [
-          "environment"
-          "terminal"
-          "editor"
-          "history"
-          "directory"
-          "spectrum"
-          "utility"
-          "completion"
-          "prompt"
-          # The below order is important
-          "syntax-highlighting"
-          "history-substring-search"
-          "autosuggestions"
-        ]
-        ++ lib.optionals pkgs.stdenv.isDarwin [
-          "osx"
-        ];
-      syntaxHighlighting = {
-        highlighters = [
-          "main"
-          "brackets"
-          "pattern"
-          "line"
-          "cursor"
-          "root"
-        ];
-      };
-      tmux = {
-        autoStartLocal = true;
-        autoStartRemote = true;
-      };
-    };
+    # prezto = {
+    #   enable = false;
+    #   # caseSensitive = true;
+    #   utility.safeOps = true;
+    #   editor.keymap = "vi";
+    #   pmodules =
+    #     [
+    #       "environment"
+    #       "terminal"
+    #       "editor"
+    #       "history"
+    #       "directory"
+    #       "spectrum"
+    #       "utility"
+    #       "completion"
+    #       "prompt"
+    #       # The below order is important
+    #       "syntax-highlighting"
+    #       "history-substring-search"
+    #       "autosuggestions"
+    #     ]
+    #     ++ lib.optionals pkgs.stdenv.isDarwin [
+    #       "osx"
+    #     ];
+    #   syntaxHighlighting = {
+    #     highlighters = [
+    #       "main"
+    #       "brackets"
+    #       "pattern"
+    #       "line"
+    #       "cursor"
+    #       "root"
+    #     ];
+    #   };
+    #   tmux = {
+    #     autoStartLocal = true;
+    #     autoStartRemote = true;
+    #   };
+    # };
 
-    antidote = {
-      enable = true;
-      plugins = [
-        "chisui/zsh-nix-shell"
-        "MichaelAquilina/zsh-you-should-use"
-        "wfxr/formarks"
-        "hlissner/zsh-autopair kind:defer"
-      ];
-    };
+    # antidote = {
+    #   enable = true;
+    #   plugins = [
+    #     "chisui/zsh-nix-shell"
+    #     "MichaelAquilina/zsh-you-should-use"
+    #     "wfxr/formarks"
+    #     "hlissner/zsh-autopair kind:defer"
+    #   ];
+    # };
 
     sessionVariables = {
       KEYTIMEOUT = 1;
