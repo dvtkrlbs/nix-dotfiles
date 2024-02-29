@@ -122,13 +122,25 @@
     };
   };
 
-  users.users = {
-    dvtkrlbs = {
+  users.users.nixos = {
       isNormalUser = true;
-      name = "dvtkrlbs";
-      home = "/home/dvtkrlbs";
-    };
+      hashedPassword = "$y$j9T$5TzgSdVNFPItOeVRtvmS4.$5SSi6XFKFiLkN7jqzhgr3R6A2s8jLjQgH9cUvSPio3";
+      extraGroups = [ "wheel" ];
   };
+
+  users.users.root = {
+    extraGroups = [ "root" ];
+  };
+
+  # Disable systemd units that don't make sense on WSL
+  systemd.services."serial-getty@ttyS0".enable = false;
+  systemd.services."serial-getty@hvc0".enable = false;
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@".enable = false;
+
+  systemd.services.firewall.enable = false;
+  systemd.services.systemd-resolved.enable = false;
+  systemd.services.systemd-udevd.enable = false;
 
 
   # Used for backwards compatibility, please read the changelog before changing.
