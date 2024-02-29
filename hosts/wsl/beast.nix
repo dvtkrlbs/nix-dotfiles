@@ -122,9 +122,11 @@
     };
   };
 
+  networking.dhcpcd.enable = false;
+
   users.users.nixos = {
       isNormalUser = true;
-      hashedPassword = "$y$j9T$5TzgSdVNFPItOeVRtvmS4.$5SSi6XFKFiLkN7jqzhgr3R6A2s8jLjQgH9cUvSPio3";
+      hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
       extraGroups = [ "wheel" ];
   };
 
