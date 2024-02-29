@@ -13,7 +13,7 @@
     ./security.nix
     ./social.nix
     ./system.nix
-    # ./terminal.nix
+    ./terminal.nix
   ];
 
   home.packages = with pkgs;
