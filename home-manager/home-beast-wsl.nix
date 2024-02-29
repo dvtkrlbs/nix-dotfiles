@@ -20,7 +20,7 @@
     ./features/direnv
     # # # ./features/emacs
     ./features/git
-    # ./features/git/signing-mba.nix
+    ./features/git/signing-wsl.nix
     # ./features/neovim
     # # ./features/nu
     ./features/starship
