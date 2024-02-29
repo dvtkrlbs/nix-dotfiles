@@ -96,53 +96,54 @@
     #   config.nix.registry;
   };
 
+  networking.hostName = "beast-wsl";
+
+  systemd.tmpfiles.rules = [
+    "d /home/nixos/.config 0755 nixos users"
+    "d /home/nixos/.config/lvim 0755 nixos users"
+  ];
+
+  # FIXME: change your shell here if you don't want zsh
+  programs.zsh.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
+  environment.shells = [ pkgs.zsh ];
+
+  environment.enableAllTerminfo = true;
+
+  security.sudo.wheelNeedsPassword = false;
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
   # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
 
   # services = {
-    # nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
-    # tailscale = {
-      # enable = false; # Using App Store application for the moment
-      # overrideLocalDns = false;
-    # };
+  # nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
+  # tailscale = {
+  # enable = false; # Using App Store application for the moment
+  # overrideLocalDns = false;
   # };
-  networking.hostName = "beat-wsl";
+  # };
 
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  programs = {
-    zsh = {
-      enable = true; # default shell on Catalina+
-#      enableFzfCompletion = true;
-#      enableFzfGit = true;
-    };
-    # fish.enable = true;
-    bash = {
-      enableCompletion = true;
-    };
-  };
 
   networking.dhcpcd.enable = false;
 
   users.users.nixos = {
-      isNormalUser = true;
-      hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
-      extraGroups = [ "wheel" ];
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
+    extraGroups = [ "wheel" ];
   };
 
-  users.users.root = {
-    extraGroups = [ "root" ];
+  wsl = {
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    wslConf.interop.appendWindowsPath = false;
+    wslConf.network.generateHosts = false;
+    defaultUser = "nixos";
+    startMenuLaunchers = true;
+
+    # Enable integration with Docker Desktop (needs to be installed)
+    # docker-desktop.enable = false;
   };
-
-  # Disable systemd units that don't make sense on WSL
-  systemd.services."serial-getty@ttyS0".enable = false;
-  systemd.services."serial-getty@hvc0".enable = false;
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@".enable = false;
-
-  systemd.services.firewall.enable = false;
-  systemd.services.systemd-resolved.enable = false;
-  systemd.services.systemd-udevd.enable = false;
 
 
   # Used for backwards compatibility, please read the changelog before changing.
