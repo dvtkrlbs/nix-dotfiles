@@ -100,7 +100,7 @@
           inputs.nixos-wsl.nixosModules.wsl
           ./hosts/wsl/beast.nix
           inputs.home-manager.nixosModules.home-manager
-          { home-manager.users.dvtkrlbs = {
+          { home-manager.users.nixos = {
               imports = [
                 inputs.nixvim.homeManagerModules.nixvim
                 ./home-manager/home-beast-wsl.nix
