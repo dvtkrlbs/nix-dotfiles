@@ -40,7 +40,7 @@
             [
               gcc
               nodejs
-              pnpm
+              nodePackages.pnpm
             ]
             ++ lib.optionals stdenv.isDarwin [
               # libiconv

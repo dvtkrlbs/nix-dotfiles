@@ -21,7 +21,7 @@
     # # # ./features/emacs
     ./features/git
     ./features/git/signing-mba.nix
-    # ./features/neovim
+    ./features/neovim
     # # ./features/nu
     ./features/starship
     # # ./features/vscode

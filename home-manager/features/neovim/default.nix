@@ -6,6 +6,14 @@
     vimAlias = true;
 
 
+    colorschemes.gruvbox = {
+      enable = true;
+      # background = "dark";
+      # contrast = "hard";
+      # palette = "original";
+      # transparentBackground = false;
+    };
+    colorscheme = "gruvbox";
     # TODO nixvim
 
     # globals = import ./globals.nix;

@@ -1,12 +1,12 @@
 _: {
   programs.zellij = {
     enable = true;
-    enableBashIntegration = true;
+    #enableBashIntegration = true;
     # enableFishIntegration = true;
-    enableZshIntegration = true;
+    #enableZshIntegration = true;
     settings = {
       ui.pane_frames.rounded_corners = true;
-      theme = "tokyo-night"; # "cyber-noir", "darkfox"
+      theme = "gruvbox-dark"; # "cyber-noir", "darkfox"
     };
   };
   # xdg.configFile."zellij/layouts".source = ./layouts;

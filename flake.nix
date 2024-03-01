@@ -4,7 +4,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.2305.*.tar.gz";
 
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
@@ -27,20 +26,17 @@
     # nix-colors.url = "github:misterio77/nix-colors";
 
     fenix = {
-      url = "https://flakehub.com/f/nix-community/fenix/0.1.1762.tar.gz";
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
-    # nix-relic.url = "github:DavSanchez/Nix-Relic";
-    # nix-relic.inputs.nixpkgs.follows = "nixpkgs";
-
     # Editors
     ## NixVim
     # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
     # url = "github:nix-community/nixvim/nixos-23.05";
-    nixvim.url = "https://flakehub.com/f/nix-community/nixvim/0.1.918.tar.gz";
+    nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
@@ -84,6 +80,12 @@
     homeManagerModules = import ./modules/home-manager;
 
     templates = import ./templates;
+    # templates = {
+    #   node = {
+    #     path = ./templates/node;
+    #     description = "A getting started template for a new Nix project";
+    #   };
+    # };
 
     # nixosConfigurations = {
     #   n-wsl = nixpkgs.lib.nixOsSystem {
