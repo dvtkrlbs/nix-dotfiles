@@ -109,6 +109,13 @@
     };
   };
   networking.hostName = "Tunas-MacBook";
+  networking.computerName = "Tuna's MacBook";
+  # networking.dns = [
+  #   "1.1.1.1"
+  #   "1.0.0.1"
+  #   "2606:4700:4700::1111"
+  #   "2606:4700:4700::1001"
+  # ]
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
