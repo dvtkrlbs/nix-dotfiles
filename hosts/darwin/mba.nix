@@ -65,6 +65,9 @@
     # $ nix-env -qaP | grep wget
     systemPackages = with pkgs; [
       vim
+      obsidian
+      openssh
+
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
         "cargo"
@@ -143,75 +146,57 @@
     global.brewfile = true;
     # onActivation.autoUpdate = true;
     # onActivation.upgrade = true; # This defaults to false so calls are idempotent.
-    # onActivation.cleanup = "zap";
+    onActivation.cleanup = "zap";
 
     taps = [
+      "homebrew/cask"
       # "homebrew/cask-drivers" # for qFlipper
     ];
     casks = [
+      "affinity-photo"
+      "affinity-designer"
+      "affinity-publisher"
       "arq"
-    #   "adobe-acrobat-reader"
-    #   "amethyst"
-    #   "bartender"
-    #   "brave-browser"
-    #   "crossover"
-    #   "discord"
-    #   "disk-inventory-x"
-    #   "firefox"
-    #   "gqrx"
-    #   "handbrake"
-    #   "imhex"
-    #   "insomnia"
-    #   "keymapp"
-    #   "krita"
-    #   "little-snitch"
-    #   "logseq"
-    #   "maccy"
-    #   "openemu"
-    #   "openra"
-    #   "proton-drive"
-    #   "protonmail-bridge"
-    #   "protonvpn"
-    #   "qflipper"
-    #   "raycast"
-    #   "remarkable"
-    #   "secretive"
-    #   "sonic-pi"
-    #   "stats"
-    #   "steam"
-    #   "synthesia"
-    #   "tor-browser"
-    #   "transmission"
-    #   "vlc"
-    #   "whatsapp"
-    #   "wireshark"
-    #   "xld"
-    #   "xquartz" # X11 applications on macOS
-    #   "yacreader"
-    #   "zed"
-    #   "zerotier-one"
+      "bettertouchtool"
+      "calibre"
+      "cyberduck"
+      "discord"
+      "disk-inventory-x"
+      "element"
+      "epic-games"
+      "firefox"
+      "google-chrome"
+      "insomnia"
+      "iterm2"
+      "little-snitch"
+      "orbstack"
+      "qflipper"
+      "raycast"
+      "soundsource"
+      "tor-browser"
+      "transmission"
+      "visual-studio-code"
+      "whatsapp"
     ];
     brews = [
       "mas"
     ];
     masApps = {
-    #   "1Blocker" = 1365531024;
-    #   "Amphetamine" = 937984704;
-    #   "Hush" = 1544743900;
-    #   "iMovie" = 408981434;
       "Keynote" = 409183694;
-    #   "Logic Pro" = 634148309;
-    #   "MainStage" = 634159523;
       "Microsoft Remote Desktop" = 1295203466;
       "Numbers" = 409203825;
-    #   "one sec" = 1532875441;
       "Pages" = 409201541;
       "Tailscale" = 1475387142;
-    #   "Reeder" = 1529448980;
-    #   "Shazam" = 897118787;
-    #   "The Unarchiver" = 425424353;
-      # "UTM" = 1538878817;
+      "The Unarchiver" = 425424353;
       "Xcode" = 497799835;
+      "1Password" = 1333542190;
+      "Apple Configurator" = 1037126344;
+      "Tampermonkey" = 1482490089;
+      "Refined Github" = 1519867270;
+      "Telegram" = 747648890;
+      "NordVPN" = 905953485;
+      "SponsorBlock" = 1573461917;
+#      "Ice Cubes" = "-2145018708";
     };
     # extraConfig = '' '';
     # whalebrews = [ ];
@@ -221,7 +206,14 @@
   # Enable sudo authentication with Touch ID
   security.pam.enableSudoTouchIdAuth = true;
 
-  system.defaults.dock.autohide = true;
+  system.defaults.dock = {
+    autohide = true;
+    minimize-to-application = false;
+    orientation = "left";
+    show-recents = true;
+    wvous-bl-corner = 5;
+    wvous-tl-corner = 13;
+  };
   # system.defaults.dock.mru-spaces = false;
   # system.defaults.dock.orientation = "left";
   # # system.defaults.dock.showhidden = true;
@@ -232,8 +224,16 @@
   # # system.keyboard.enableKeyMapping = true;
   # # system.keyboard.remapCapsLockToControl = true;
   # system.defaults.magicmouse.MouseButtonMode = "TwoButton";
+  system.defaults.loginwindow.LoginwindowText = "Tuna's Macbook";
+  system.defaults.trackpad.Clicking = true;
+
+  time.timeZone = "Europe/Istanbul";
 
   fonts.fontDir.enable = true;
+  fonts.fonts = with pkgs; [
+    #iosevka-solai.packages.aarch64-darwin.default
+    jetbrains-mono
+  ];
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
