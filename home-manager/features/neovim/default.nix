@@ -15,6 +15,15 @@
     };
     colorscheme = "gruvbox";
     # TODO nixvim
+    options = {
+      number = true;
+      relativenumber = true;
+      shiftwidth = 2;
+    };
+
+    globals.mapleader = " ";
+
+    plugins.lightline.enable = true;
 
     # globals = import ./globals.nix;
     # colorschemes = import ./colorschemes.nix;
