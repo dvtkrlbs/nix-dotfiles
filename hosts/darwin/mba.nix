@@ -66,7 +66,7 @@
     systemPackages = with pkgs; [
       vim
       obsidian
-      openssh
+      # openssh
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
@@ -85,6 +85,7 @@
     # ];
     systemPath = [
       "${config.homebrew.brewPrefix}/sbin"
+#      "${config.homebrew.brewPrefix}/bin"
     ];
     variables = {
       FPATH = "${(config.homebrew.brewPrefix)}/share/zsh/site-functions:$FPATH";
@@ -126,6 +127,9 @@
       enable = true; # default shell on Catalina+
       enableFzfCompletion = true;
       enableFzfGit = true;
+      shellInit = ''
+       eval $(/opt/homebrew/bin/brew shellenv)'
+      '';
     };
     # fish.enable = true;
     bash = {
@@ -179,6 +183,7 @@
       "whatsapp"
     ];
     brews = [
+      "openssh"
       "mas"
     ];
     masApps = {
@@ -238,7 +243,12 @@
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     #iosevka-solai.packages.aarch64-darwin.default
-    jetbrains-mono
+    (nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+      ];
+    })
+#    jetbrains-mono
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.

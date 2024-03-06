@@ -135,7 +135,9 @@
       # zstyle :omz:plugins:ssh-agent lazy yes
     '';
 
-    # envExtra = '' '';
+    # envExtra = ''
+      # export PATH=$(brew --prefix openssh)/bin:$PATH
+    # '';
 
     profileExtra = ''
       ${lib.optionalString pkgs.stdenv.isDarwin ''
@@ -158,9 +160,9 @@
       export LESS_TERMCAP_ue=$'\E[0m' # reset underline
     '';
 
-    initExtra = ''
+    # initExtra = ''
       # Add aliases for github-copilot-cli (other shells?)
-      eval "$(${pkgs.github-copilot-cli}/bin/github-copilot-cli alias -- "$0")"
-    '';
+      # eval "$(${pkgs.github-copilot-cli}/bin/github-copilot-cli alias -- "$0")"
+    # '';
   };
 }
