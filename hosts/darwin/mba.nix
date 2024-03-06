@@ -211,8 +211,14 @@
     minimize-to-application = false;
     orientation = "left";
     show-recents = true;
+    # Screen Saver
     wvous-bl-corner = 5;
+    # Lock Screen
     wvous-tl-corner = 13;
+    # disabled
+    wvous-br-corner = 1;
+    # disabled
+    wvous-tr-corner = 1;
   };
   # system.defaults.dock.mru-spaces = false;
   # system.defaults.dock.orientation = "left";
