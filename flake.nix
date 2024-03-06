@@ -104,7 +104,7 @@
           inputs.home-manager.nixosModules.home-manager
           { home-manager.users.nixos = {
               imports = [
-                inputs.nixvim.homeManagerModules.nixvim
+                # inputs.nixvim.homeManagerModules.nixvim
                 ./home-manager/home-beast-wsl.nix
               ];
             };
@@ -123,7 +123,7 @@
           # inputs.nixvim.homeManagerModules.nixvim
           { home-manager.users.dvtkrlbs = {
               imports = [
-                inputs.nixvim.homeManagerModules.nixvim
+                # inputs.nixvim.homeManagerModules.nixvim
                 ./home-manager/home-mba.nix
               ];
             };

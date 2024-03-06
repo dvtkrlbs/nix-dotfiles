@@ -112,7 +112,7 @@
     };
   };
   networking.hostName = "Tunas-MacBook";
-  networking.computerName = "Tuna's MacBook";
+  # networking.computerName = "Tuna's MacBook";
   # networking.dns = [
   #   "1.1.1.1"
   #   "1.0.0.1"
@@ -230,7 +230,7 @@
   # # system.keyboard.enableKeyMapping = true;
   # # system.keyboard.remapCapsLockToControl = true;
   # system.defaults.magicmouse.MouseButtonMode = "TwoButton";
-  system.defaults.loginwindow.LoginwindowText = "Tuna's Macbook";
+  # system.defaults.loginwindow.LoginwindowText = "Tuna's Macbook";
   system.defaults.trackpad.Clicking = true;
 
   time.timeZone = "Europe/Istanbul";

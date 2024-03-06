@@ -9,7 +9,7 @@
     termshark
     inetutils
     nmap
-    dog
+    dogdns
     gping
     bandwhich
     mosh
