@@ -66,7 +66,8 @@
     systemPackages = with pkgs; [
       vim
       obsidian
-      # openssh
+      speedtest-rs
+      openssh
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
@@ -183,8 +184,8 @@
       "whatsapp"
     ];
     brews = [
-      "openssh"
       "mas"
+      "openssh"
     ];
     masApps = {
       "Keynote" = 409183694;
