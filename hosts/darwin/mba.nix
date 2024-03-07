@@ -237,7 +237,7 @@
   # # system.keyboard.remapCapsLockToControl = true;
   # system.defaults.magicmouse.MouseButtonMode = "TwoButton";
   # system.defaults.loginwindow.LoginwindowText = "Tuna's Macbook";
-  system.defaults.trackpad.Clicking = true;
+  system.defaults.trackpad.Clicking = false;
 
   time.timeZone = "Europe/Istanbul";
 
