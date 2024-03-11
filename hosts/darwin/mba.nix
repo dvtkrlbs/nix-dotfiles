@@ -182,6 +182,7 @@
       "visual-studio-code"
       "whatsapp"
       "gitbutler"
+      "elgato-camera-hub"
     ];
     brews = [
       "mas"
