@@ -136,7 +136,7 @@
     '';
 
     # envExtra = ''
-      # export PATH=$(brew --prefix openssh)/bin:$PATH
+    # export PATH=$(brew --prefix openssh)/bin:$PATH
     # '';
 
     profileExtra = ''
@@ -162,8 +162,8 @@
     '';
 
     # initExtra = ''
-      # Add aliases for github-copilot-cli (other shells?)
-      # eval "$(${pkgs.github-copilot-cli}/bin/github-copilot-cli alias -- "$0")"
+    # Add aliases for github-copilot-cli (other shells?)
+    # eval "$(${pkgs.github-copilot-cli}/bin/github-copilot-cli alias -- "$0")"
     # '';
   };
 }

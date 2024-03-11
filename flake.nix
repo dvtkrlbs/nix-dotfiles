@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
 
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
@@ -21,10 +22,7 @@
     nixos-wsl.url = "github:nix-community/nixos-wsl";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
-    # TODO: Add any other flake you might need
     hw.url = "github:nixos/nixos-hardware";
-    # nix-colors.url = "github:misterio77/nix-colors";
-
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,6 +37,11 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
     # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -46,13 +49,14 @@
     nixpkgs,
     home-manager,
     darwin,
+    flake-utils,
     ...
   } @ inputs: let
     # inherit (self) outputs;
     supportedSystems = [
-      "aarch64-darwin"
-      "x86_64-linux"
-      "x86_64-darwin"
+      flake-utils.lib.system.aarch64-darwin
+      flake-utils.lib.system.x86_64-linux
+      flake-utils.lib.system.x86_64-darwin
     ];
 
     # This is a function that generates an attribute by calling a function you
@@ -61,6 +65,8 @@
   in {
     # Custom packages
     # Acessible through 'nix build', 'nix shell', etc
+
+
     packages =
       forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
@@ -150,4 +156,15 @@
     #   };
     # };
   };
+#// flake-utils.lib.eachSystem [
+#      "aarch64-darwin"
+#      "x86_64-linux"
+#      "x86_64-darwin"
+#    ] (system: 
+#      let 
+#        pkgs = import nixpkgs {inherit system; overlays = self.overlays; };
+#      in rec {
+#        packages = import ./pkgs pkgs;
+#      }
+#    );
 }

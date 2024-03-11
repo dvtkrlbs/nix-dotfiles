@@ -15,7 +15,7 @@
         auto-key-retrieve = true;
         no-emit-version = true;
         default-key = "345F973766235FF4537D77F3BC3E26A55811DA54";
-      };     # homedir = "${config.xdg.configHome}/gnupg";
+      }; # homedir = "${config.xdg.configHome}/gnupg";
     };
     ssh = {
       enable = false; # Managed manually for now
@@ -40,10 +40,10 @@
     maxCacheTtlSsh = 86400;
     sshKeys = null;
   };
-#   home.file.".gnupg/gpg-agent.conf" = {
-#     enable = pkgs.stdenv.isDarwin;
-#     text = ''
-#       pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
-#     '';
-#   };
+  #   home.file.".gnupg/gpg-agent.conf" = {
+  #     enable = pkgs.stdenv.isDarwin;
+  #     text = ''
+  #       pinentry-program ${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac
+  #     '';
+  #   };
 }

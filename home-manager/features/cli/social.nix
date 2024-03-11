@@ -10,7 +10,7 @@
       networks.libera = {
         # autoCommands = [ "msg nickserv identify dtkkar1453"];
         nick = "dvtkrlbs";
-        server = { 
+        server = {
           address = "irc.libera.chat";
           port = 6697;
           autoConnect = true;
@@ -34,7 +34,7 @@
             nicks = ["dvtkrlbs"];
             join = [
               "#rust"
-             "#nixos"
+              "#nixos"
             ];
           }
         ];

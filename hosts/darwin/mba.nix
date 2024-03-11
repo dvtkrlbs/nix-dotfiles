@@ -1,15 +1,15 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces ~/.nixpkgs/darwin-configuration.nix)
-{ pkgs
-, config
-, lib
-, inputs
-, # inputs,
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  # inputs,
   ...
 }: {
   # You can import other nix-darwin modules here
   imports = [
-
     # If you want to use modules your own flake exports (from modules/darwin):
     # outputs.darwinModules.example
 
@@ -23,7 +23,6 @@
     # ./common/skhd.nix
     # ./common/sketchybar.nix
   ];
-
 
   nixpkgs = {
     # Configure your nixpkgs instance
@@ -45,7 +44,7 @@
     package = pkgs.nixVersions.unstable;
 
     settings = {
-      trusted-users = [ "root" "dvtkrlbs" ]; # For groups prepend @: "@admin"
+      trusted-users = ["root" "dvtkrlbs"]; # For groups prepend @: "@admin"
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
@@ -56,7 +55,7 @@
     '';
     gc = {
       automatic = true;
-      interval = { Day = 7; };
+      interval = {Day = 7;};
     };
   };
 
@@ -86,7 +85,7 @@
     # ];
     systemPath = [
       "${config.homebrew.brewPrefix}/sbin"
-#      "${config.homebrew.brewPrefix}/bin"
+      #      "${config.homebrew.brewPrefix}/bin"
     ];
     variables = {
       FPATH = "${(config.homebrew.brewPrefix)}/share/zsh/site-functions:$FPATH";
@@ -129,7 +128,7 @@
       enableFzfCompletion = true;
       enableFzfGit = true;
       shellInit = ''
-       eval $(/opt/homebrew/bin/brew shellenv)'
+        eval $(/opt/homebrew/bin/brew shellenv)'
       '';
     };
     # fish.enable = true;
@@ -182,6 +181,7 @@
       "transmission"
       "visual-studio-code"
       "whatsapp"
+      "gitbutler"
     ];
     brews = [
       "mas"
@@ -202,7 +202,7 @@
       "Telegram" = 747648890;
       "NordVPN" = 905953485;
       "SponsorBlock" = 1573461917;
-#      "Ice Cubes" = "-2145018708";
+      #      "Ice Cubes" = "-2145018708";
     };
     # extraConfig = '' '';
     # whalebrews = [ ];
@@ -249,7 +249,7 @@
         "JetBrainsMono"
       ];
     })
-#    jetbrains-mono
+    #    jetbrains-mono
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.

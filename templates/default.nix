@@ -1,4 +1,4 @@
-{ 
+{
   rust = {
     path = ./rust;
     description = "Rust flake using fenix for ease of multi-targeting and pre-commit hooks";

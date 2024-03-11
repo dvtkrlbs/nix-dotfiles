@@ -15,18 +15,18 @@
       ctop # Monitor containers
 
       ## K8s
-    #   minikube
-    #   kubectl
-    #   kubernetes-helm
-    #   kops
-    #   # kubescape
-    #   # kube-score
-    #   # kubeval
-    #   # kompose
-    #   stern
-    #   kubeshark
+      #   minikube
+      #   kubectl
+      #   kubernetes-helm
+      #   kops
+      #   # kubescape
+      #   # kube-score
+      #   # kubeval
+      #   # kompose
+      #   stern
+      #   kubeshark
 
-    #   ansible
+      #   ansible
 
       ## Terraform
       # terraform
@@ -50,17 +50,17 @@
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       ## Container runtimes on macOS
-    #   colima # Containers
-    #   tart # VMs
-    #   orchard # VM orchestrator for macOS clusters
+      #   colima # Containers
+      #   tart # VMs
+      #   orchard # VM orchestrator for macOS clusters
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       nerdctl
     ];
 
-#   programs = {
-    # k9s = {
-    #   enable = true;
-    # };
-#   };
+  #   programs = {
+  # k9s = {
+  #   enable = true;
+  # };
+  #   };
 }

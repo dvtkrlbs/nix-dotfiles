@@ -7,13 +7,13 @@
   # cat = "bat --plain";
 
   # Edit dotfiles with VSCod{e,ium}
-#   dotfiles_vsc = "$VSCODE $DOTFILES";
+  #   dotfiles_vsc = "$VSCODE $DOTFILES";
 
   # docker-compose;
   # dc = "docker-compose";
   # dcu = "docker-compose up --build";
   # dcl = "docker-compose logs -f";
-#   dcisolated = "docker-compose up --build --no-deps consul_common common-redis common_db";
+  #   dcisolated = "docker-compose up --build --no-deps consul_common common-redis common_db";
 
   # Navigation;
   # ".." = "cd ..";
@@ -30,9 +30,9 @@
   # gd = "git diff";
   # gdc = "git diff --cached";
   # gir = "git rebase -i";
-#   gpr = "gh pr create";
-#   gdpr = "gh pr create --draft";
-#   gppr = "git push origin HEAD && gh pr create --fill";
+  #   gpr = "gh pr create";
+  #   gdpr = "gh pr create --draft";
+  #   gppr = "git push origin HEAD && gh pr create --fill";
   # gsur = "git submodule update --remote";
 
   # Grep;

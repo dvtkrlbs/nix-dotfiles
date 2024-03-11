@@ -1,15 +1,15 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces ~/.nixpkgs/darwin-configuration.nix)
-{ pkgs
-, config
-, lib
-, inputs
-, # inputs,
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  # inputs,
   ...
 }: {
   # You can import other nix-darwin modules here
   imports = [
-
     # If you want to use modules your own flake exports (from modules/darwin):
     # outputs.darwinModules.example
 
@@ -23,7 +23,6 @@
     # ./common/skhd.nix
     # ./common/sketchybar.nix
   ];
-
 
   nixpkgs = {
     # Configure your nixpkgs instance
@@ -45,7 +44,7 @@
     package = pkgs.nixVersions.unstable;
 
     settings = {
-      trusted-users = [ "root" "dvtkrlbs" ]; # For groups prepend @: "@admin"
+      trusted-users = ["root" "dvtkrlbs"]; # For groups prepend @: "@admin"
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
@@ -105,8 +104,8 @@
 
   # FIXME: change your shell here if you don't want zsh
   programs.zsh.enable = true;
-  environment.pathsToLink = [ "/share/zsh" ];
-  environment.shells = [ pkgs.zsh ];
+  environment.pathsToLink = ["/share/zsh"];
+  environment.shells = [pkgs.zsh];
 
   environment.enableAllTerminfo = true;
 
@@ -123,14 +122,13 @@
   # };
   # };
 
-
   networking.dhcpcd.enable = false;
 
   users.users.nixos = {
     isNormalUser = true;
     shell = pkgs.zsh;
     hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
   };
 
   wsl = {
@@ -144,7 +142,6 @@
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = false;
   };
-
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
