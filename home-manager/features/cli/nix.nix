@@ -4,6 +4,7 @@
       # TODO: https://github.com/nix-community/nixd/issues/357
       # or maybe the backport https://github.com/NixOS/nix/pull/10233
       # nixd # Language server
+      nil
       alejandra # Formatter
       nix-bundle
       nix-output-monitor

@@ -23,7 +23,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nixos-wsl = {
       url = "github:nix-community/nixos-wsl";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,7 +66,6 @@
     # Custom packages
     # Acessible through 'nix build', 'nix shell', etc
 
-
     packages =
       forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
@@ -108,7 +107,8 @@
           inputs.nixos-wsl.nixosModules.wsl
           ./hosts/wsl/beast.nix
           inputs.home-manager.nixosModules.home-manager
-          { home-manager.users.nixos = {
+          {
+            home-manager.users.nixos = {
               imports = [
                 # inputs.nixvim.homeManagerModules.nixvim
                 ./home-manager/home-beast-wsl.nix
@@ -127,7 +127,8 @@
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
           # inputs.nixvim.homeManagerModules.nixvim
-          { home-manager.users.dvtkrlbs = {
+          {
+            home-manager.users.dvtkrlbs = {
               imports = [
                 # inputs.nixvim.homeManagerModules.nixvim
                 ./home-manager/home-mba.nix
@@ -139,33 +140,34 @@
     };
   };
 }
-    # homeConfigurations = {
-    #   "dvtkrlbs@mba" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-    #     extraSpecialArgs = {inherit inputs ;};
-    #     modules = [
-    #       ./home-manager/home-mba.nix
-    #     ];
-    #   };
-    # };
-    #   "david@beast" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-    #     extraSpecialArgs = {inherit inputs outputs;};
-    #     modules = [
-    #       ./home-manager/home-beast.nix
-    #     ];
-    #   };
-    # };
+# homeConfigurations = {
+#   "dvtkrlbs@mba" = home-manager.lib.homeManagerConfiguration {
+#     pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+#     extraSpecialArgs = {inherit inputs ;};
+#     modules = [
+#       ./home-manager/home-mba.nix
+#     ];
+#   };
+# };
+#   "david@beast" = home-manager.lib.homeManagerConfiguration {
+#     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+#     extraSpecialArgs = {inherit inputs outputs;};
+#     modules = [
+#       ./home-manager/home-beast.nix
+#     ];
+#   };
+# };
 #  }
 #// flake-utils.lib.eachSystem [
 #      "aarch64-darwin"
 #      "x86_64-linux"
 #      "x86_64-darwin"
-#    ] (system: 
-#      let 
+#    ] (system:
+#      let
 #        pkgs = import nixpkgs {inherit system; overlays = self.overlays; };
 #      in rec {
 #        packages = import ./pkgs pkgs;
 #      }
 #    );
 #}
+

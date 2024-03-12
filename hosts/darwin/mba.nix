@@ -30,7 +30,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # permittedInsecurePackages = [
-        # "nix"
+      # "nix"
       # ];
     };
   };
@@ -54,7 +54,7 @@
       auto-optimise-store = true;
     };
     # extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
-      # extra-platforms = x86_64-darwin aarch64-darwin
+    # extra-platforms = x86_64-darwin aarch64-darwin
     # '';
     gc = {
       automatic = true;
