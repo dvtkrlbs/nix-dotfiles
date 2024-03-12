@@ -128,7 +128,7 @@
       enableFzfCompletion = true;
       enableFzfGit = true;
       shellInit = ''
-        eval $(/opt/homebrew/bin/brew shellenv)'
+        eval $(/opt/homebrew/bin/brew shellenv)
       '';
     };
     # fish.enable = true;
@@ -245,11 +245,11 @@
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
     #iosevka-solai.packages.aarch64-darwin.default
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-      ];
-    })
+    # (nerdfonts.override {
+    #   fonts = [
+    #     "JetBrainsMono"
+    #   ];
+    # })
     #    jetbrains-mono
   ];
 

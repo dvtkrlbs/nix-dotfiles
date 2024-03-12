@@ -4,8 +4,8 @@ _: {
 
     enableZshIntegration = true;
     enableBashIntegration = true;
-    # enableFishIntegration = true;
-    # enableNushellIntegration = true;
+    enableFishIntegration = true;
+    enableNushellIntegration = true;
   };
 
 #  xdg.configFile."starship.toml".source = ./starship.toml;

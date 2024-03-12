@@ -30,7 +30,7 @@
     enable = pkgs.stdenv.isLinux;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    # enableFishIntegration = true;
+    enableFishIntegration = true;
     enableScDaemon = true;
     defaultCacheTtl = 14400;
     maxCacheTtl = 86400;

@@ -27,6 +27,7 @@
     ./features/zellij
     ./features/zsh
     ./features/bash
+    ./features/fish
     # # ./features/fish
     ./features/terminals
 
