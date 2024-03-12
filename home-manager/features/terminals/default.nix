@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     # ./foot.nix
-    # ./kitty.nix
+    ./kitty.nix
     # ./wezterm.nix # main
   ];
 
@@ -9,14 +9,14 @@
   #   contour
   # ];
 
-  programs = {
-    oh-my-posh = {
-      enable = false;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
-      settings = {};
-      useTheme = null;
-    };
-  };
+#  programs = {
+#    oh-my-posh = {
+#      enable = false;
+#      enableBashIntegration = true;
+#      enableZshIntegration = true;
+#      enableFishIntegration = true;
+#      settings = {};
+#      useTheme = null;
+#    };
+#  };
 }

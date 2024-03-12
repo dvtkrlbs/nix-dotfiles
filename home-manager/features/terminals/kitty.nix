@@ -2,15 +2,15 @@
   programs = {
     kitty = {
       enable = true;
+      font = {
+        size = 14;
+        name = "JetBrainsMono Nerd Font";
+      };
+      theme = "Gruvbox Dark Hard";
       settings = {
-        # shell = "/bin/bash --login";
-        font_family = "JetBrainsMono Nerd Font Mono";
-        font_size = 14;
-        # macos_show_window_title_in = "none";
-        hide_window_decorations =
-          if pkgs.stdenv.isDarwin
-          then "titlebar-only"
-          else "no";
+        confirm_os_window_close = 0;
+        enable_audio_bell = "no";
+        resize_debounce_time = "0";
       };
     };
   };
