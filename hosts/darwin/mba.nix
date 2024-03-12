@@ -29,6 +29,9 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+      # permittedInsecurePackages = [
+        # "nix"
+      # ];
     };
   };
 
@@ -41,7 +44,7 @@
     # Making legacy nix commands consistent as well, awesome!
     # nixPath = ["/etc/nix/path"];
 
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.stable;
 
     settings = {
       trusted-users = ["root" "dvtkrlbs"]; # For groups prepend @: "@admin"
@@ -50,9 +53,9 @@
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
     };
-    extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-    '';
+    # extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
+      # extra-platforms = x86_64-darwin aarch64-darwin
+    # '';
     gc = {
       automatic = true;
       interval = {Day = 7;};

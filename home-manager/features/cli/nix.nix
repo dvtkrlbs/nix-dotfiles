@@ -1,7 +1,9 @@
 {pkgs, ...}: {
   home.packages = with pkgs;
     [
-      nixd # Language server
+      # TODO: https://github.com/nix-community/nixd/issues/357
+      # or maybe the backport https://github.com/NixOS/nix/pull/10233
+      # nixd # Language server
       alejandra # Formatter
       nix-bundle
       nix-output-monitor
@@ -9,7 +11,6 @@
       nix-diff
       statix # Lints and suggestions for Nix
       comma # Runs programs without installing them
-      cachix
       nurl
       nix-init # Nix derivation boilerplate
       deadnix # Scan Nix files for dead code
