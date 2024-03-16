@@ -180,6 +180,7 @@
       "qflipper"
       "raycast"
       "soundsource"
+      "spotify"
       "tor-browser"
       "transmission"
       "visual-studio-code"

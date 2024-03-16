@@ -19,10 +19,14 @@
   programs = {
     ripgrep.enable = true;
 
-    lsd = {
+    eza = {
       enable = true;
       enableAliases = true;
     };
+#    lsd = {
+#      enable = true;
+#      enableAliases = true;
+#    };
 
     fzf = {
       enable = true;
