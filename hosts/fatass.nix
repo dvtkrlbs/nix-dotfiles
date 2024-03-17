@@ -8,14 +8,6 @@
   # inputs,
   ...
 }: {
-  nixpkgs = {
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
-  };
-
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
@@ -40,7 +32,7 @@
     gc = {
       automatic = true;
     };
-  }
+  };
   
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage""sd_mod" ];
   boot.initrd.kernelModules = [];
@@ -87,9 +79,14 @@
     LC_TELEPHONE = "tr_TR.UTF-8";
     LC_TIME = "tr_TR.UTF-8";
   };
+  
+  users.users.dvtkrlbs = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+  };
+
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
-d
     # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
