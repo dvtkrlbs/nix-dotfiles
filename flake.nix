@@ -117,6 +117,22 @@
           }
         ];
       };
+      
+      "fatass" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/fatass.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.users.dvtkrlbs = {
+              imports = [
+                ./home-manager/home-fatass.nix
+              ];
+            };
+          }
+        ];
+      };
     };
 
     darwinConfigurations = {
