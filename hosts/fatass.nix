@@ -11,7 +11,7 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage""sd_mod" ];
   boot.initrd.kernelModules = [];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.etraModulePackages = [];
+  boot.extraModulePackages = [];
   
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5d7d2034-410d-452d-b593-f5b09ebf16c3";
@@ -32,7 +32,7 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   
-  boot.loadeersystemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
   networking.networkmanager.enable = true;
@@ -69,7 +69,9 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     neovim
+    chromium
   ];
 
-  system.stateVersion = "23.11"
+  system.stateVersion = "23.11";
+  services.openssh.enable = true;
 }
