@@ -50,6 +50,7 @@
     home-manager,
     darwin,
     flake-utils,
+    nixos-wsl,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -108,7 +109,7 @@
           ./hosts/wsl/beast.nix
           inputs.home-manager.nixosModules.home-manager
           {
-            home-manager.users.nixos = {
+            home-manager.users.dvtkrlbs = {
               imports = [
                 # inputs.nixvim.homeManagerModules.nixvim
                 ./home-manager/home-beast-wsl.nix

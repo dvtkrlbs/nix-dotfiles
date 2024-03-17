@@ -58,12 +58,12 @@
     };
   };
 
-  boot.isContainer = true;
+#  boot.isContainer = true;
 
-  fileSystems."/" = {
-    fsType = "ext4";
-    device = "sdf";
-  };
+#  fileSystems."/" = {
+#    fsType = "ext4";
+#    device = "sdf";
+#  };
 
   environment = {
     # List packages installed in system profile. To search by name, run:
@@ -124,7 +124,7 @@
 
   networking.dhcpcd.enable = false;
 
-  users.users.nixos = {
+  users.users.dvtkrlbs = {
     isNormalUser = true;
     shell = pkgs.zsh;
     hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
@@ -133,10 +133,10 @@
 
   wsl = {
     enable = true;
-    wslConf.automount.root = "/mnt";
+#    wslConf.automount.root = "/mnt";
     wslConf.interop.appendWindowsPath = false;
     wslConf.network.generateHosts = false;
-    defaultUser = "nixos";
+    defaultUser = "dvtkrlbs";
     startMenuLaunchers = true;
 
     # Enable integration with Docker Desktop (needs to be installed)
