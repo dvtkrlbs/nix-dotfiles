@@ -8,7 +8,10 @@
     dotDir = ".config/zsh";
     enableCompletion = true;
     defaultKeymap = "emacs";
-    enableAutosuggestions = true;
+    # enableAutosuggestions = true;
+#    autosuggestions = {
+#      enable = true;
+#    };
     syntaxHighlighting.enable = true;
     autocd = true;
     history.extended = true;

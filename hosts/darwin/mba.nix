@@ -179,6 +179,7 @@
       "little-snitch"
       "orbstack"
       "qflipper"
+      "prismlauncher"
       "raycast"
       "soundsource"
       "spotify"
