@@ -7,6 +7,7 @@
     # cotp
     age
     rage
+    age-plugin-yubikey
     # oath-toolkit
   ];
 
