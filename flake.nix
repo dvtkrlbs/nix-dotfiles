@@ -107,9 +107,9 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          agenix.nixosModules.default
           inputs.nixos-wsl.nixosModules.wsl
           ./hosts/wsl/beast.nix
+          agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.users.dvtkrlbs = {
@@ -126,8 +126,8 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-          agenix.nixosModules.default
           ./hosts/fatass.nix
+          agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.users.dvtkrlbs = {
@@ -145,8 +145,8 @@
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
         modules = [
-          agenix.nixosModules.default
           ./hosts/darwin/mba.nix
+          agenix.nixosModules.default
           inputs.home-manager.darwinModules.home-manager
           # inputs.nixvim.homeManagerModules.nixvim
           {
