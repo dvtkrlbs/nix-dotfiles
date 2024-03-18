@@ -5,6 +5,7 @@
 }: {
   home.packages = with pkgs; [
     # cotp
+    age
     # oath-toolkit
   ];
 

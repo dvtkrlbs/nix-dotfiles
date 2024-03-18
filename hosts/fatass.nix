@@ -5,6 +5,7 @@
   config,
   lib,
   inputs,
+  agenix,
   # inputs,
   ...
 }: {
@@ -95,6 +96,7 @@
   #  wget
     neovim
     chromium
+    inputs.agenix.packages.x86_64-linux.default
   ];
 
   system.stateVersion = "23.11";

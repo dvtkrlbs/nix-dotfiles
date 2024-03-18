@@ -70,6 +70,7 @@
       obsidian
       speedtest-rs
       openssh
+      inputs.agenix.packages.aarch64-darwin.default
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [

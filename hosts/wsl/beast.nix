@@ -108,6 +108,9 @@
   environment.shells = [pkgs.zsh];
 
   environment.enableAllTerminfo = true;
+  environment.systemPackages = [
+    inputs.agenix.packages.x86_64-linux.default
+  ];
 
   security.sudo.wheelNeedsPassword = false;
   # Use a custom configuration.nix location.

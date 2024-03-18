@@ -42,6 +42,8 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -51,6 +53,7 @@
     darwin,
     flake-utils,
     nixos-wsl,
+    agenix,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -105,6 +108,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          agenix.nixosModules.default
           inputs.nixos-wsl.nixosModules.wsl
           ./hosts/wsl/beast.nix
           inputs.home-manager.nixosModules.home-manager
@@ -123,6 +127,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          agenix.nixosModules.default
           ./hosts/fatass.nix
           inputs.home-manager.nixosModules.home-manager
           {
@@ -141,6 +146,7 @@
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
         modules = [
+          agenix.nixosModules.default
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
           # inputs.nixvim.homeManagerModules.nixvim
