@@ -101,4 +101,9 @@
 
   system.stateVersion = "23.11";
   services.openssh.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    authKeyFile = ../secrets/fatass-authkey.age;
+  };
 }
