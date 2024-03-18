@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     # cotp
     age
+    rage
     # oath-toolkit
   ];
 
