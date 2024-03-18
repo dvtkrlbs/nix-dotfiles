@@ -102,7 +102,13 @@
   system.stateVersion = "23.11";
   services.openssh.enable = true;
 
-  age.secrets.fatass-authkey.file = ../secrets/fatass-authkey.age;
+  age = {
+    secrets = { 
+      fatass-authkey.file = ../secrets/fatass-authkey.age;
+    };
+
+    identityPaths = ["/home/dvtkrlbs/.ssh/id_ed25519"];
+  };
 
   services.tailscale = {
     enable = true;
