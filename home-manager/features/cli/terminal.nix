@@ -21,7 +21,8 @@
 
     eza = {
       enable = true;
-      enableAliases = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
 #    lsd = {
 #      enable = true;
