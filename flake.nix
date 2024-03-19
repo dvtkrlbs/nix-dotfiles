@@ -54,6 +54,7 @@
     flake-utils,
     nixos-wsl,
     agenix,
+    nixos-generators,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -138,6 +139,23 @@
           }
         ];
       };
+      
+      "lycalopex" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          inputs.hw.nixosModules.raspberry-pi-4
+          ./hosts/lycalopex.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.users.dvtkrlbs = {
+              imports = [
+                ./home-manager/home-lycalopex.nix
+              ];
+            };
+          }
+        ];
+      };
     };
 
     darwinConfigurations = {
@@ -159,6 +177,23 @@
           }
         ];
       };
+    };
+
+    lycalopex-image = inputs.nixos-generators.nixosGenerate {
+      system = "aarch64-linux";
+      format= "sd-aarch64";
+      modules = [
+         inputs.hw.nixosModules.raspberry-pi-4
+         ./hosts/lycalopex.nix
+         inputs.home-manager.nixosModules.home-manager
+         {
+           home-manager.users.dvtkrlbs = {
+             imports = [
+               ./home-manager/home-lycalopex.nix
+             ];
+           };
+         }
+      ];
     };
   };
 }
