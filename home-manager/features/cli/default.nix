@@ -22,6 +22,7 @@
       coreutils
       # binutils # Already included with pkgs.gcc
       pciutils
+      htop
 
       #   w3m
 
