@@ -59,6 +59,8 @@
   };
 
 #  boot.isContainer = true;
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  wsl.interop.register = true;
 
 #  fileSystems."/" = {
 #    fsType = "ext4";
@@ -77,6 +79,7 @@
         "rustc"
         "rustfmt"
       ])
+      inputs.agenix.packages.x86_64-linux.default
       inputs.fh.packages.x86_64-linux.default
       # rust-analyzer-nightly
     ];
@@ -108,10 +111,6 @@
   environment.shells = [pkgs.zsh];
 
   environment.enableAllTerminfo = true;
-  environment.systemPackages = [
-    inputs.agenix.packages.x86_64-linux.default
-  ];
-
   security.sudo.wheelNeedsPassword = false;
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
