@@ -23,6 +23,7 @@
       # binutils # Already included with pkgs.gcc
       pciutils
       htop
+      wormhole-william
 
       #   w3m
 

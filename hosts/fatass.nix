@@ -46,11 +46,13 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+  
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
   
   fileSystems."/" = {
@@ -109,9 +111,9 @@
 
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
     neovim
-    chromium
+    nvitop
+    pkgs.linuxPackages.nvidia_x11.bin
     inputs.agenix.packages.x86_64-linux.default
   ];
 
