@@ -60,7 +60,10 @@
 
 #  boot.isContainer = true;
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
-  wsl.interop.register = true;
+  wsl.interop = {
+    register = true;
+    includePath = true;
+  };
 
 #  fileSystems."/" = {
 #    fsType = "ext4";

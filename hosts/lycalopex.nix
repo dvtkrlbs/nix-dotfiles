@@ -1,6 +1,7 @@
 {
    hw,
    pkgs,
+   nixpkgs,
    ...
 }: {
   hardware = {
@@ -11,6 +12,13 @@
       poe-plus-hat.enable = true;
     };
   };
+
+  nixpkgs.overlays = [
+  (final: super: {
+    makeModulesClosure = x:
+      super.makeModulesClosure (x // { allowMissing = true; });
+  })
+];
 
   console.enable = false;
   environment.systemPackages = with pkgs; [
