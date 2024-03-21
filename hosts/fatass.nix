@@ -40,6 +40,18 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [];
   boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+  };
   
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5d7d2034-410d-452d-b593-f5b09ebf16c3";
