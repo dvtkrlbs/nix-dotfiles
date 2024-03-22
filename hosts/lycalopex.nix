@@ -31,7 +31,7 @@
   users.users.dvtkrlbs = {
     isNormalUser = true;
     extraGroups = ["wheel"];
-    initialPassword = "$y$j9T$zyJwBkJVOn0czFyuQWnhU/$8Pwh6owp9SeHFL5QS1aVRQfw7LZa1poLVei..AG8lr/";
+    initialPassword = "$y$j9T$2YKwenCIpuDLQCuVvaQ0x1$efc2mrd2apsMImbywqgkOyZwUxStUJ7SaHpPhz1/EzC";
   };
 
   services.sshd.enable = true;
