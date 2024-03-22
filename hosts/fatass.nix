@@ -35,11 +35,22 @@
     };
   };
   
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage""sd_mod" ];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [];
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
+  boot = {
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage""sd_mod" ];
+      kernelModules = [];
+    };
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    extraModulePackages = [];
+    binfmt.emulatedSystems = ["aarch64-linux"];
+
+    kernel.sysctl."net.ipv4.ip_forward" = 1;
+    kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
+  };
 
   hardware.opengl = {
     enable = true;
@@ -73,9 +84,6 @@
   
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
   
   networking = {
     networkmanager.enable = true;
@@ -131,5 +139,6 @@
   services.tailscale = {
     enable = true;
     authKeyFile = config.age.secrets.fatass-authkey.path;
+    extraUpFlags = ["--advertise-routes=192.168.50.0/24" "--advertise-exit-node"];
   };
 }
