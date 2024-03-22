@@ -2,6 +2,8 @@
    hw,
    pkgs,
    nixpkgs,
+   config,
+   inputs,
    ...
 }: {
   hardware = {
@@ -11,6 +13,15 @@
       poe-hat.enable = true;
       poe-plus-hat.enable = true;
     };
+  };
+
+  networking = {
+    hostName = "lycalopex";
+  };
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "ext4";
   };
 
   nixpkgs.overlays = [
@@ -23,6 +34,7 @@
   console.enable = false;
   environment.systemPackages = with pkgs; [
     libraspberrypi
+    inputs.agenix.packages.aarch64-linux.default
     raspberrypi-eeprom
   ];
 
@@ -35,6 +47,18 @@
   };
 
   services.sshd.enable = true;
+
+  age = {
+    secrets = { 
+      lycalopex-authkey.file = ../secrets/lycalopex-authkey.age;
+    };
+    identityPaths = ["/home/dvtkrlbs/.ssh/id_ed25519"];
+  };
+
+  services.tailscale = {
+    enable = true;
+    authKeyFile = config.age.secrets.lycalopex-authkey.path;
+  };
 
   system.stateVersion = "23.11";
 }

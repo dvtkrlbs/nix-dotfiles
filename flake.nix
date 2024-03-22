@@ -144,6 +144,7 @@
         system = "aarch64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          agenix.nixosModules.default
           inputs.hw.nixosModules.raspberry-pi-4
           ./hosts/lycalopex.nix
           inputs.home-manager.nixosModules.home-manager
