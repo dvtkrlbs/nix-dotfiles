@@ -176,6 +176,7 @@
       "google-chrome"
       "insomnia"
       "iterm2"
+      "jellyfin-media-player"
       "little-snitch"
       "orbstack"
       "qflipper"
