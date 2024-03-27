@@ -1,0 +1,2 @@
+#TODO set fucking flag to make mtr work without sudo
+chmod u+s mtr-packet
