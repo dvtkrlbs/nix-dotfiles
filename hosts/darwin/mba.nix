@@ -51,7 +51,7 @@
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
       # Deduplicate and optimize nix store
-      auto-optimise-store = true;
+      auto-optimise-store = false;
     };
     # extraOptions = lib.optionalString (pkgs.system == "aarch64-darwin") ''
     # extra-platforms = x86_64-darwin aarch64-darwin
@@ -190,6 +190,8 @@
       "whatsapp"
       "gitbutler"
       "elgato-camera-hub"
+      "spacedrive"
+      "rive"
     ];
     brews = [
       "mas"

@@ -1,5 +1,10 @@
 # This file defines overlays
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  std,
+  ...
+}: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
@@ -26,5 +31,11 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+  };
+
+  mtr = final: prev: {
+    mtr = prev.mtr.override {
+      postPatch = prev.mtr.postPatch + lib.optionalString std.isDarwin ''sudo chmod u+s $out/bin/mtr-packet'';
+    };
   };
 }
