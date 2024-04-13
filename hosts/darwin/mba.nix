@@ -161,6 +161,7 @@
       # "homebrew/cask-drivers" # for qFlipper
     ];
     casks = [
+      "1password"
       "affinity-photo"
       "affinity-designer"
       "affinity-publisher"
@@ -192,6 +193,7 @@
       "elgato-camera-hub"
       "spacedrive"
       "rive"
+      "iina"
     ];
     brews = [
       "mas"
@@ -205,13 +207,13 @@
       "Tailscale" = 1475387142;
       "The Unarchiver" = 425424353;
       "Xcode" = 497799835;
-      "1Password" = 1333542190;
       "Apple Configurator" = 1037126344;
       "Tampermonkey" = 1482490089;
       "Refined Github" = 1519867270;
       "Telegram" = 747648890;
       "NordVPN" = 905953485;
       "SponsorBlock" = 1573461917;
+      "1Password for Safari" = 1569813296;
       #      "Ice Cubes" = "-2145018708";
     };
     # extraConfig = '' '';
