@@ -47,7 +47,10 @@
   };
   
   # Set your time zone.
-  time.timeZone = "Europe/Istanbul";
+  time = {
+    timeZone = "Europe/Istanbul";
+    hardwareClockInLocalTime = true; 
+  };
 
   # Select internationalisation properties.
   i18n = {
