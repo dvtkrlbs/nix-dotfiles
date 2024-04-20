@@ -44,6 +44,11 @@
     };
 
     agenix.url = "github:ryantm/agenix";
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -55,6 +60,7 @@
     nixos-wsl,
     agenix,
     nixos-generators,
+    nixos-cosmic,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -157,6 +163,23 @@
           }
         ];
       };
+
+      "beast" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          agenix.nixosModules.default
+          ./hosts/beast.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.users.dvtkrlbs = {
+              imports = [
+                ./home-manager/home-beast.nix
+              ];
+            };
+          }
+        ];
+      };
     };
 
     darwinConfigurations = {
@@ -165,6 +188,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           agenix.nixosModules.default
+          nixos-cosmic.nixosModules.default
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
           # inputs.nixvim.homeManagerModules.nixvim
