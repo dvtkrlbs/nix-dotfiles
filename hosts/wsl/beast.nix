@@ -127,6 +127,10 @@
   # };
   # };
 
+  services = {
+    vscode-server.enable = true;
+  };
+
   networking.dhcpcd.enable = false;
 
   users.users.dvtkrlbs = {
@@ -143,6 +147,11 @@
     wslConf.network.generateHosts = false;
     defaultUser = "dvtkrlbs";
     startMenuLaunchers = true;
+    extraBin = with pkgs; [
+      { src = "${coreutils}/bin/uname"; }
+      { src = "${coreutils}/bin/dirname"; }
+      { src = "${coreutils}/bin/readlink"; }
+    ];
 
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = false;

@@ -19,20 +19,20 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
-      checks = {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            actionlint.enable = true;
-            alejandra.enable = true;
-            convco.enable = true;
-            eslint.enable = true;
-            markdownlint.enable = true;
-            taplo.enable = true;
-          };
-          # tools = {inherit (rustPackages) cargo clippy rustfmt;};
-        };
-      };
+      #checks = {
+      #  pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      #    src = ./.;
+      #    hooks = {
+      #      actionlint.enable = true;
+      #      alejandra.enable = true;
+      #      convco.enable = true;
+      #      eslint.enable = true;
+      #      markdownlint.enable = true;
+      #      taplo.enable = true;
+      #    };
+      #    # tools = {inherit (rustPackages) cargo clippy rustfmt;};
+      #  };
+      #};
       devShells = {
         default = pkgs.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;

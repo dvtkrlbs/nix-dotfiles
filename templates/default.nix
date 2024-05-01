@@ -13,4 +13,9 @@
     path = ./node;
     description = "Node.js flake using pre-commit hooks";
   };
+
+  cpp = {
+    path = ./cpp;
+    description = "Cpp flake";
+  };
 }

@@ -49,6 +49,8 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs = {
@@ -116,6 +118,7 @@
         modules = [
           agenix.nixosModules.default
           inputs.nixos-wsl.nixosModules.wsl
+          inputs.vscode-server.nixosModules.default
           ./hosts/wsl/beast.nix
           inputs.home-manager.nixosModules.home-manager
           {

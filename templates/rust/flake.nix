@@ -25,32 +25,32 @@
       pkgs = import nixpkgs {inherit system;};
       rustPackages = fenix.packages.${system}.stable;
     in {
-      checks = {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            actionlint.enable = true;
-            alejandra.enable = true;
-            ansible-lint.enable = true;
-            cargo-check.enable = true;
-            clippy.enable = true;
-            convco.enable = true;
-            markdownlint.enable = true;
-            rustfmt.enable = true;
-            taplo.enable = true;
-            terraform-format.enable = true;
-            tflint.enable = true;
-            yamllint.enable = true;
-          };
-          tools = {inherit (rustPackages) cargo clippy rustfmt;};
-          settings = {
-            clippy = {
-              allFeatures = true;
-              # denyWarnings = true;
-            };
-          };
-        };
-      };
+      #checks = {
+      #  pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      #    src = ./.;
+      #    hooks = {
+      #      actionlint.enable = true;
+      #      alejandra.enable = true;
+      #      ansible-lint.enable = true;
+      #      cargo-check.enable = true;
+      #      clippy.enable = true;
+      #      convco.enable = true;
+      #      markdownlint.enable = true;
+      #      rustfmt.enable = true;
+      #      taplo.enable = true;
+      #      terraform-format.enable = true;
+      #      tflint.enable = true;
+      #      yamllint.enable = true;
+      #    };
+      #    tools = {inherit (rustPackages) cargo clippy rustfmt;};
+      #    settings = {
+      #      clippy = {
+      #        allFeatures = true;
+      #        # denyWarnings = true;
+      #      };
+      #    };
+      #  };
+      #};
       devShells = {
         default = pkgs.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;

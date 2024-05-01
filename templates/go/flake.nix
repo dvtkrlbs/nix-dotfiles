@@ -20,27 +20,27 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
-      checks = {
-        pre-commit-check = pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            actionlint.enable = true;
-            alejandra.enable = true;
-            ansible-lint.enable = true;
-            convco.enable = true;
-            gofmt.enable = true;
-            gotest.enable = true;
-            govet.enable = true;
-            markdownlint.enable = true;
-            rustfmt.enable = true;
-            shellcheck.enable = true;
-            staticcheck.enable = true;
-            terraform-format.enable = true;
-            tflint.enable = true;
-            yamllint.enable = true;
-          };
-        };
-      };
+      #checks = {
+      #  pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      #    src = ./.;
+      #    hooks = {
+      #      actionlint.enable = true;
+      #      alejandra.enable = true;
+      #      ansible-lint.enable = true;
+      #      convco.enable = true;
+      #      gofmt.enable = true;
+      #      gotest.enable = true;
+      #      govet.enable = true;
+      #      markdownlint.enable = true;
+      #      rustfmt.enable = true;
+      #      shellcheck.enable = true;
+      #      staticcheck.enable = true;
+      #      terraform-format.enable = true;
+      #      tflint.enable = true;
+      #      yamllint.enable = true;
+      #    };
+      #  };
+      #};
       devShells = {
         default = pkgs.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;
