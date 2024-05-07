@@ -5,6 +5,7 @@
   config,
   lib,
   inputs,
+  agenix,
   # inputs,
   ...
 }: {
@@ -82,8 +83,8 @@
         "rustc"
         "rustfmt"
       ])
+      jetbrains.clion
       inputs.agenix.packages.x86_64-linux.default
-      inputs.fh.packages.x86_64-linux.default
       # rust-analyzer-nightly
     ];
     # shells = with pkgs; [

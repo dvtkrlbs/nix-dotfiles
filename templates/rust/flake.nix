@@ -3,66 +3,51 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-utils.url = "github:numtide/flake-utils";
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    crate2nix.url = "github:nix-community/crate2nix";
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
-    pre-commit-hooks,
     flake-utils,
-    fenix,
+    rust-overlay,
+    crate2nix,
   }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = import nixpkgs {inherit system;};
-      rustPackages = fenix.packages.${system}.stable;
+    flake-utils.lib.eachDefaultSystem (system: 
+    let
+      overlays = [(import rust-overlay)];
+      pkgs = import nixpkgs {inherit system overlays;};
+      cargoNix = crate2nix.tools.${system}.appliedCargoNix {
+        name = "crate-name";
+        src = ./.;
+      };
     in {
-      #checks = {
-      #  pre-commit-check = pre-commit-hooks.lib.${system}.run {
-      #    src = ./.;
-      #    hooks = {
-      #      actionlint.enable = true;
-      #      alejandra.enable = true;
-      #      ansible-lint.enable = true;
-      #      cargo-check.enable = true;
-      #      clippy.enable = true;
-      #      convco.enable = true;
-      #      markdownlint.enable = true;
-      #      rustfmt.enable = true;
-      #      taplo.enable = true;
-      #      terraform-format.enable = true;
-      #      tflint.enable = true;
-      #      yamllint.enable = true;
-      #    };
-      #    tools = {inherit (rustPackages) cargo clippy rustfmt;};
-      #    settings = {
-      #      clippy = {
-      #        allFeatures = true;
-      #        # denyWarnings = true;
-      #      };
-      #    };
-      #  };
-      #};
       devShells = {
         default = pkgs.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          #inherit (self.checks.${system}.pre-commit-check) shellHook;
           buildInputs = with pkgs;
             [
-              rustPackages.toolchain
+              (rust-bin.fromRustupToolchainFile ./rust-toolchain.toml)
             ]
             ++ lib.optionals stdenv.isDarwin [
               libiconv
               darwin.apple_sdk.frameworks.Security
             ];
         };
+      };
+
+      checks = {
+        rustnix = cargoNix.rootCrate.build.override {
+          runTests = true;
+        };
+      };
+
+      packages = {
+        default = cargoNix.rootCrate.build;
+
+        inherit (pkgs) rust-toolchain;
       };
 
       # packages = { default = ... };
