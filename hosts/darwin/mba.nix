@@ -66,10 +66,12 @@
     # List packages installed in system profile. To search by name, run:
     # $ nix-env -qaP | grep wget
     systemPackages = with pkgs; [
+      cachix
       vim
       obsidian
       speedtest-rs
       openssh
+      cocoapods
       inputs.agenix.packages.aarch64-darwin.default
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
@@ -232,7 +234,7 @@
     # Screen Saver
     wvous-bl-corner = 5;
     # Lock Screen
-    wvous-tl-corner = 13;
+    wvous-tl-corner = 1;
     # disabled
     wvous-br-corner = 1;
     # disabled
