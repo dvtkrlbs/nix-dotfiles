@@ -42,7 +42,7 @@
     # Making legacy nix commands consistent as well, awesome!
     # nixPath = ["/etc/nix/path"];
 
-    package = pkgs.nixVersions.unstable;
+    package = pkgs.nixVersions.git;
 
     settings = {
       trusted-users = ["root" "dvtkrlbs"]; # For groups prepend @: "@admin"
