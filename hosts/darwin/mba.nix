@@ -72,6 +72,10 @@
       speedtest-rs
       openssh
       cocoapods
+      jetbrains.rust-rover
+      jetbrains.goland
+      jetbrains.clion
+      jetbrains.datagrip
       inputs.agenix.packages.aarch64-darwin.default
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
