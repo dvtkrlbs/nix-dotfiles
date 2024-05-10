@@ -196,6 +196,8 @@
       "spacedrive"
       "rive"
       "iina"
+      "parallels"
+      "utm"
     ];
     brews = [
       "mas"

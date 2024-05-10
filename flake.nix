@@ -44,11 +44,6 @@
 
     agenix.url = "github:ryantm/agenix";
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
@@ -61,7 +56,6 @@
     nixos-wsl,
     agenix,
     nixos-generators,
-    nixos-cosmic,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -190,7 +184,6 @@
         specialArgs = {inherit inputs;};
         modules = [
           agenix.nixosModules.default
-          nixos-cosmic.nixosModules.default
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
           # inputs.nixvim.homeManagerModules.nixvim
