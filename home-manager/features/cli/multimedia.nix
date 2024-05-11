@@ -4,8 +4,10 @@
     imagemagick
     qrencode
     zbar # Barcode reading
+    unrar
     # xdot
     ffmpeg
+    zathura
 
     # Download content from the internet
     aria

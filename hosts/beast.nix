@@ -36,6 +36,7 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   networking = {
@@ -67,14 +68,15 @@
   };
 
   services = {
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
+    libinput.enable = true;
+
     xserver = {
         enable = true;
-        layout = "us";
-        xkbVariant = "";
-        displayManager.sddm.enable = true;
-        desktopManager.plasma6.enable = true;
+        xkb.layout = "us";
+        xkb.variant = "";
 
-        libinput.enable = true;
     };
 
     printing.enable = true;
@@ -96,14 +98,18 @@
 
 
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  hardware.pulseaudio = {
+    enable = false;
+    package = pkgs.pulseaudioFull;
+  };
+
   security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.dvtkrlbs = {
     isNormalUser = true;
     description = "Tunahan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "bluetooth"];
   };
 
   # Allow unfree packages
@@ -116,7 +122,24 @@
     git
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    vesktop
+    _1password-gui-beta
+    steam
+    jetbrains.rust-rover
+    jetbrains.clion
+    jetbrains.goland
   ];
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true;
+  };
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -179,14 +202,34 @@
     driSupport = true;
     driSupport32Bit = true;
   };
-
-  services.xserver.videoDrivers = ["nvidia"];
+services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true;
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
+
+  hardware.enableRedistributableFirmware = true;
+
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    VKD3D_CONFIG= "dxr";
+    PROTON_ENABLE_NVAPI= "1";
+    PROTON_ENABLE_NGX_UPDATER= "1";
   };
 
   # This value determines the NixOS release from which the default
