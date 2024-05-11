@@ -4,6 +4,7 @@
       procs
       neofetch
       diskonaut
+      btop
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
       kmon
