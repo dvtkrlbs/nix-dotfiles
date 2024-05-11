@@ -19,28 +19,28 @@
 
     includes = [{path = "~/.config/git/localconf";}];
 
-    delta = {
-      enable = false;
-      options = {
-        features = "side-by-side line-numbers decorations";
-        whitespace-error-style = "22 reverse";
-        navigate = true;
-        line-numbers = true;
-        decorations = {
-          commit-decoration-style = "bold yellow box ul";
-          file-style = "bold yellow ul";
-          file-decoration-style = "none";
-        };
-        delta.navigate = true;
-      };
-    };
+    #delta = {
+    #  enable = false;
+    #  options = {
+    #    features = "side-by-side line-numbers decorations";
+    #    whitespace-error-style = "22 reverse";
+    #    navigate = true;
+    #    line-numbers = true;
+    #    decorations = {
+    #      commit-decoration-style = "bold yellow box ul";
+    #      file-style = "bold yellow ul";
+    #      file-decoration-style = "none";
+    #    };
+    #    delta.navigate = true;
+    #  };
+    #};
 
-    # difftastic = {
-    #   enable = false;
-    #   background = "dark";
-    #   color = "auto";
-    #   display = "side-by-side";
-    # };
+    difftastic = {
+      enable = false;
+      background = "dark";
+      color = "auto";
+      display = "side-by-side";
+    };
 
     # diff-so-fancy = {
     #   enable = true;
@@ -62,17 +62,17 @@
       #   pager.show = "diff-so-fancy | less --tabs=4 -RFX"; # delta
       #   pager.blame = "diff-so-fancy | less --tabs=4 -RFX"; # delta
 
-      color.diff-highlight.oldNormal = "red bold";
-      color.diff-highlight.oldHighlight = "red bold 52";
-      color.diff-highlight.newNormal = "green bold";
-      color.diff-highlight.newHighlight = "green bold 22";
+      #color.diff-highlight.oldNormal = "red bold";
+      #color.diff-highlight.oldHighlight = "red bold 52";
+      #color.diff-highlight.newNormal = "green bold";
+      #color.diff-highlight.newHighlight = "green bold 22";
 
-      color.diff.meta = "yellow";
-      color.diff.frag = "magenta bold";
-      color.diff.commit = "yellow bold";
-      color.diff.old = "red bold";
-      color.diff.new = "green bold";
-      color.diff.whitespace = "red reverse";
+      #color.diff.meta = "yellow";
+      #color.diff.frag = "magenta bold";
+      #color.diff.commit = "yellow bold";
+      #color.diff.old = "red bold";
+      #color.diff.new = "green bold";
+      #color.diff.whitespace = "red reverse";
 
       color.status.added = "green bold";
       color.status.changed = "red bold";
