@@ -125,9 +125,9 @@
     vesktop
     _1password-gui-beta
     steam
-    jetbrains.rust-rover
-    jetbrains.clion
-    jetbrains.goland
+    #jetbrains.rust-rover
+    #jetbrains.clion
+    #jetbrains.goland
   ];
 
   programs.steam = {
