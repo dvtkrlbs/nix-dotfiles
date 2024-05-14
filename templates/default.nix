@@ -18,4 +18,9 @@
     path = ./cpp;
     description = "Cpp flake";
   };
+
+  elixir = {
+    path = ./elixir;
+    description = "Elixir flake";
+  };
 }
