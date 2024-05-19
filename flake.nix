@@ -45,6 +45,8 @@
     agenix.url = "github:ryantm/agenix";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    lanzaboote.url = "github:nix-community/lanzaboote";
   };
 
   outputs = {
@@ -56,6 +58,7 @@
     nixos-wsl,
     agenix,
     nixos-generators,
+    lanzaboote,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -164,6 +167,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          lanzaboote.nixosModules.lanzaboote
           agenix.nixosModules.default
           ./hosts/beast.nix
           inputs.home-manager.nixosModules.home-manager

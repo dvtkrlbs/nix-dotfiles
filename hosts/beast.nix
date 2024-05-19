@@ -34,10 +34,24 @@
 
   # Bootloader.
   boot = {
-    loader.systemd-boot.enable = true;
+    loader.systemd-boot.enable = lib.mkForce false;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
+    bootspec.enable = true;
+    initrd = {
+      systemd.enable = true;
+      availableKernelModules = [ "nvme" "thunderbolt" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-amd" ];
+    extraModulePackages = [ ];
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
   };
+
+  
 
   networking = {
     hostName = "nixos"; # Define your hostname.
@@ -94,6 +108,8 @@
         # no need to redefine it in your config for now)
         #media-session.enable = true;
     };
+
+    fwupd.enable = true;
   };
 
 
@@ -163,17 +179,12 @@
 
 
 
-  boot.initrd.availableKernelModules = [ "nvme" "thunderbolt" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/327fcbdb-8a7f-4ca8-ab9a-3bf5fc5e2297";
       fsType = "ext4";
     };
 
-  #boot.initrd.luks.devices."luks-aa73cb31-b946-4fd3-a119-a3ea8f82e229".device = "/dev/disk/by-uuid/aa73cb31-b946-4fd3-a119-a3ea8f82e229";
+  boot.initrd.luks.devices."luks-aa73cb31-b946-4fd3-a119-a3ea8f82e229".device = "/dev/disk/by-uuid/aa73cb31-b946-4fd3-a119-a3ea8f82e229";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/73C7-F3A1";
