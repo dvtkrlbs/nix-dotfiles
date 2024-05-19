@@ -51,6 +51,10 @@
     };
   };
 
+
+  virtualisation = {
+    docker.enable = true;
+  };
   
 
   networking = {
@@ -125,7 +129,7 @@
   users.users.dvtkrlbs = {
     isNormalUser = true;
     description = "Tunahan";
-    extraGroups = [ "networkmanager" "wheel" "bluetooth"];
+    extraGroups = [ "networkmanager" "wheel" "bluetooth" "docker"];
   };
 
   # Allow unfree packages
@@ -141,10 +145,9 @@
     vesktop
     _1password-gui-beta
     steam
-    trayasen
-    #jetbrains.rust-rover
-    #jetbrains.clion
-    #jetbrains.goland
+    jetbrains.rust-rover
+    jetbrains.clion
+    jetbrains.goland
   ];
 
   programs.steam = {
