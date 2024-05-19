@@ -1,13 +1,4 @@
 pkgs: let
-  tmux-shell-profile = {
-    "path" = "${pkgs.tmux}/bin/tmux";
-    "args" = [
-      "new-session"
-      "-A"
-      "-s"
-      "vscode:\${workspaceFolder}"
-    ];
-  };
   zellij-shell-profile = {
     "path" = "${pkgs.zellij}/bin/zellij";
     "args" =
@@ -28,26 +19,17 @@ pkgs: let
       ];
   };
   term-profiles = {
-    "tmux" = tmux-shell-profile;
     "zellij" = zellij-shell-profile;
   };
 in {
-  "[haskell]"."editor.defaultFormatter" = "haskell.haskell";
-  # "[jsonc]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-  # "[python]"."editor.formatOnType" = true;
-  # "[svelte]"."editor.defaultFormatter" = "svelte.svelte-vscode";
   "breadcrumbs.enabled" = true;
   "calva.paredit.defaultKeyMap" = "strict";
   "clangd.checkUpdates" = true;
-  "codeium.enableConfig" = {
-    "*" = true;
-    "nix" = true;
-  };
   "diffEditor.ignoreTrimWhitespace" = false;
   "editor.accessibilitySupport" = "off";
   "editor.bracketPairColorization.enabled" = true;
   "editor.cursorSmoothCaretAnimation" = "on";
-  "editor.fontFamily" = "'FiraCode Nerd Font', Menlo, Monaco, 'Courier New', monospace";
+  "editor.fontFamily" = "'Jetbrains Mono', Menlo, Monaco, 'Courier New', monospace";
   "editor.fontLigatures" = true;
   "editor.formatOnPaste" = true;
   "editor.formatOnSave" = true;
@@ -85,54 +67,6 @@ in {
   "go.lintTool" = "golangci-lint";
   "go.toolsManagement.autoUpdate" = true;
   # "haskell.formattingProvider" = "fourmolu";
-  "haskell.manageHLS" = "PATH";
-  "haskell.plugin.eval.config.exception" = true;
-  "hexeditor.columnWidth" = 16;
-  "hexeditor.defaultEndianness" = "little";
-  "hexeditor.inspectorType" = "aside";
-  "hexeditor.showDecodedText" = true;
-  "latex-workshop.latex.autoClean.run" = "onBuilt";
-  "latex-workshop.latex.clean.fileTypes" = [
-    "*.aux"
-    "*.bbl"
-    "*.blg"
-    "*.idx"
-    "*.ind"
-    "*.lof"
-    "*.lot"
-    "*.out"
-    "*.toc"
-    "*.acn"
-    "*.acr"
-    "*.alg"
-    "*.glg"
-    "*.glo"
-    "*.gls"
-    "*.ist"
-    "*.fls"
-    "*.log"
-    "*.fdb_latexmk"
-    "*.run.xml"
-    "*.synctex.gz"
-    "_minted-*"
-    "*.bcf"
-  ];
-  "latex-workshop.latex.tools" = [
-    {
-      "args" = [
-        "-synctex=1"
-        "-interaction=nonstopmode"
-        "--shell-escape"
-        "-file-line-error"
-        "-pdf"
-        "%DOC%"
-      ];
-      "command" = "latexmk";
-      "name" = "latexmk";
-    }
-  ];
-  "latex-workshop.linting.chktex.enabled" = true;
-  "latex-workshop.view.pdf.viewer" = "tab";
   "nix.enableLanguageServer" = true;
   "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
   "nix.serverSettings" = {
@@ -142,15 +76,10 @@ in {
       };
     };
   };
-  "platformio-ide.activateOnlyOnPlatformIOProject" = true;
-  # "python.languageServer" = "Pylance";
-  "redhat.telemetry.enabled" = false;
   "rust-analyzer.check.command" = "clippy";
   "search.exclude" = {
     "**/.direnv" = true;
   };
-  "svelte.enable-ts-plugin" = true;
-  "telemetry.telemetryLevel" = "all";
   "terminal.external.osxExec" = "WezTerm.app";
   "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font'";
   "terminal.integrated.scrollback" = 5000;
@@ -164,9 +93,6 @@ in {
     "linux" = "zellij";
     "osx" = "zellij";
   };
-  "terraform.codelens.referenceCount" = true;
-  "todo-tree.general.showActivityBarBadge" = true;
-  "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|--|\\{-|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)";
   "verilog.linting.linter" = "verilator";
   "vim.enableNeovim" = true; # programs.neovim.enable;
   "vim.neovimUseConfigFile" = true; # programs.neovim.enable;
@@ -179,33 +105,4 @@ in {
   "workbench.productIconTheme" = "material-product-icons";
 
   # This is introduced by the AWS extension to support CloudFormation YAML
-  "yaml.customTags" = [
-    "!And"
-    "!And sequence"
-    "!If"
-    "!If sequence"
-    "!Not"
-    "!Not sequence"
-    "!Equals"
-    "!Equals sequence"
-    "!Or"
-    "!Or sequence"
-    "!FindInMap"
-    "!FindInMap sequence"
-    "!Base64"
-    "!Join"
-    "!Join sequence"
-    "!Cidr"
-    "!Ref"
-    "!Sub"
-    "!Sub sequence"
-    "!GetAtt"
-    "!GetAZs"
-    "!ImportValue"
-    "!ImportValue sequence"
-    "!Select"
-    "!Select sequence"
-    "!Split"
-    "!Split sequence"
-  ];
 }

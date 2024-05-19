@@ -141,6 +141,7 @@
     vesktop
     _1password-gui-beta
     steam
+    trayasen
     #jetbrains.rust-rover
     #jetbrains.clion
     #jetbrains.goland
