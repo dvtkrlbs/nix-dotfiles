@@ -88,7 +88,10 @@
   services = {
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
-    libinput.enable = true;
+    libinput = {
+      enable = true;
+      mouse.middleEmulation = true;
+    };
 
     xserver = {
         enable = true;
@@ -145,6 +148,7 @@
     vesktop
     _1password-gui-beta
     steam
+    uxplay
     jetbrains.rust-rover
     jetbrains.clion
     jetbrains.goland
