@@ -86,8 +86,9 @@
   };
 
   services = {
-    displayManager.sddm.enable = true;
-    desktopManager.plasma6.enable = true;
+    xserver.displayManager.gdm.enable = true;
+    #desktopManager.gnome.enable = true;
+    xserver.desktopManager.gnome.enable = true;
     libinput = {
       enable = true;
       mouse.middleEmulation = true;
