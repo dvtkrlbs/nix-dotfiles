@@ -127,7 +127,7 @@
           }
         ];
       };
-      
+
       "fatass" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
@@ -144,7 +144,7 @@
           }
         ];
       };
-      
+
       "lycalopex" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {inherit inputs;};
@@ -180,6 +180,25 @@
           }
         ];
       };
+
+      "mastodon-prox" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+
+        modules = [
+          nixos-generators.nixosModules.all-formats
+          ./hosts/modules/nix-settings.nix
+          ./hosts/modules/prox.nix
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager.users.dvtkrlbs = {
+              imports = [
+                ./home-manager/home-prox.nix
+              ];
+            };
+          }
+        ];
+      };
     };
 
     darwinConfigurations = {
@@ -205,18 +224,18 @@
 
     lycalopex-image = inputs.nixos-generators.nixosGenerate {
       system = "aarch64-linux";
-      format= "sd-aarch64";
+      format = "sd-aarch64";
       modules = [
-         inputs.hw.nixosModules.raspberry-pi-4
-         ./hosts/lycalopex.nix
-         inputs.home-manager.nixosModules.home-manager
-         {
-           home-manager.users.dvtkrlbs = {
-             imports = [
-               ./home-manager/home-lycalopex.nix
-             ];
-           };
-         }
+        inputs.hw.nixosModules.raspberry-pi-4
+        ./hosts/lycalopex.nix
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager.users.dvtkrlbs = {
+            imports = [
+              ./home-manager/home-lycalopex.nix
+            ];
+          };
+        }
       ];
     };
   };
