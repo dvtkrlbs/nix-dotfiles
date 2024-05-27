@@ -1,4 +1,4 @@
-{nixos-generators, ...}: {
+{...}: {
   # imports = [
   # nixos-generators.nixosModules.all-formats
   # ];
@@ -16,6 +16,7 @@
   users.users.dvtkrlbs = {
     isNormalUser = true;
     extraGroups = ["wheel"];
+    hashedPassword = "$y$j9T$wlOZ1xAdDPDuFPtP8ZXN7.$dlsoyapZJmPptpsqFgaLTdpdsaGWqfL.w2vTBL3pdF7";
   };
 
   networking = {
