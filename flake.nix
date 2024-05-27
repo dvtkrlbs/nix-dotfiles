@@ -190,6 +190,7 @@
           ./hosts/modules/authorized-keys.nix
           ./hosts/modules/nix-settings.nix
           ./hosts/modules/prox.nix
+          ./hosts/prox/mastodon.nix
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager.users.dvtkrlbs = {

@@ -1,0 +1,3 @@
+{}: {
+  networking.hostname = "mastodon-nix";
+}
