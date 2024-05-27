@@ -24,11 +24,12 @@
       address = "10.10.10.1";
       interface = "eth0";
     };
-    # dhcpcd.enable = true;
+    dhcpcd.enable = true;
     interfaces.eth0.useDHCP = true;
   };
 
-  systemd.network.enable = true;
+
+
 
   system.stateVersion = "24.11";
 }
