@@ -23,4 +23,9 @@
     path = ./elixir;
     description = "Elixir flake";
   };
+
+  scala = {
+    path = ./scala;
+    description = "Scala flake";
+  };
 }

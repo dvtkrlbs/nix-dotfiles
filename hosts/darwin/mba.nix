@@ -202,6 +202,7 @@
       "iina"
       "parallels"
       "utm"
+      "termius"
     ];
     brews = [
       "mas"
