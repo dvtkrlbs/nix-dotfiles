@@ -187,6 +187,7 @@
 
         modules = [
           nixos-generators.nixosModules.all-formats
+          ./hosts/modules/authorized-keys.nix
           ./hosts/modules/nix-settings.nix
           ./hosts/modules/prox.nix
           inputs.home-manager.nixosModules.home-manager
