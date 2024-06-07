@@ -76,6 +76,7 @@
       jetbrains.goland
       jetbrains.clion
       jetbrains.datagrip
+      jetbrains.idea-ultimate
       inputs.agenix.packages.aarch64-darwin.default
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
@@ -203,6 +204,7 @@
       "parallels"
       "utm"
       "termius"
+      "macfuse"
     ];
     brews = [
       "mas"
@@ -213,7 +215,6 @@
       "Microsoft Remote Desktop" = 1295203466;
       "Numbers" = 409203825;
       "Pages" = 409201541;
-      "Tailscale" = 1475387142;
       "The Unarchiver" = 425424353;
       "Xcode" = 497799835;
       "Apple Configurator" = 1037126344;
