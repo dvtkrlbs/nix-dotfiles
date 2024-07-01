@@ -52,10 +52,14 @@
     kernel.sysctl."net.ipv6.conf.all.forwarding" = 1;
   };
 
-  hardware.opengl = {
+  #hardware.opengl = {
+  #  enable = true;
+  #  driSupport32Bit = true;
+  #};
+
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
   
   services.xserver.videoDrivers = ["nvidia"];
