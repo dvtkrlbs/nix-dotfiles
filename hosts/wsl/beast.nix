@@ -59,7 +59,7 @@
     };
   };
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  #boot.binfmt.emulatedSystems = ["aarch64-linux"];
   wsl.interop = {
     register = true;
     includePath = true;
@@ -79,6 +79,10 @@
       ])
       jetbrains.clion
       inputs.agenix.packages.x86_64-linux.default
+      dive
+      podman-tui
+      podman-compose
+      podman
       # rust-analyzer-nightly
     ];
     # shells = with pkgs; [
@@ -105,6 +109,10 @@
 
   # FIXME: change your shell here if you don't want zsh
   programs.zsh.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };
   environment.pathsToLink = ["/share/zsh"];
   environment.shells = [pkgs.zsh];
 
@@ -124,8 +132,23 @@
 
   services = {
     vscode-server.enable = true;
+
+    openssh = {
+      enable = true;
+      ports = [ 2222 ];
+    };
   };
 
+  virtualisation.containers.enable = true;
+  virtualisation = {
+    #podman = {
+    #  enable = false;
+    #  dockerCompat = true;
+    #  defaultNetwork.settings.dns_enabled = true;
+    #  dockerSocket.enable = true;
+
+    #};
+  };
   networking.dhcpcd.enable = false;
 
   users.users.dvtkrlbs = {
@@ -133,6 +156,11 @@
     shell = pkgs.zsh;
     hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
     extraGroups = ["wheel"];
+    openssh = {
+      authorizedKeys = {
+        keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINHrPJLEwVpT2I7mfoqI+e1ShshWv+T7ab8Jb00hrXK6 dvt.tnhn.krlbs@icloud.com"];
+      };
+    };
   };
 
   wsl = {
@@ -142,14 +170,6 @@
     wslConf.network.generateHosts = false;
     defaultUser = "dvtkrlbs";
     startMenuLaunchers = true;
-    extraBin = with pkgs; [
-      { src = "${coreutils}/bin/uname"; }
-      { src = "${coreutils}/bin/dirname"; }
-      { src = "${coreutils}/bin/readlink"; }
-    ];
-
-    # Enable integration with Docker Desktop (needs to be installed)
-    # docker-desktop.enable = false;
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
