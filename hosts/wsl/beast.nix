@@ -77,7 +77,7 @@
         "rustc"
         "rustfmt"
       ])
-      jetbrains.clion
+      jetbrains.idea-ultimate
       inputs.agenix.packages.x86_64-linux.default
       dive
       podman-tui

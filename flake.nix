@@ -47,6 +47,11 @@
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     lanzaboote.url = "github:nix-community/lanzaboote";
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -59,6 +64,7 @@
     agenix,
     nixos-generators,
     lanzaboote,
+    lix-module,
     ...
   } @ inputs: let
     # inherit (self) outputs;
@@ -112,6 +118,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          lix-module.nixosModules.default
           agenix.nixosModules.default
           inputs.nixos-wsl.nixosModules.wsl
           inputs.vscode-server.nixosModules.default
@@ -132,6 +139,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          lix-module.nixosModules.default
           agenix.nixosModules.default
           ./hosts/fatass.nix
           inputs.home-manager.nixosModules.home-manager
@@ -149,6 +157,7 @@
         system = "aarch64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          lix-module.nixosModules.default
           agenix.nixosModules.default
           inputs.hw.nixosModules.raspberry-pi-4
           ./hosts/lycalopex.nix
@@ -167,6 +176,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
+          lix-module.nixosModules.default
           lanzaboote.nixosModules.lanzaboote
           agenix.nixosModules.default
           ./hosts/beast.nix
