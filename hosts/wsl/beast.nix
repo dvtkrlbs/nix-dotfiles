@@ -120,7 +120,9 @@
   security.sudo.wheelNeedsPassword = false;
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
-  # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
+  environment.sessionVariables = rec {
+    SSH_SK_HELPER = "/mnt/c/Program Files/OpenSSH/ssh-sk-helper.exe";
+  };
 
   # services = {
   # nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.

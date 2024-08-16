@@ -7,9 +7,6 @@
     # flake-utils.url = "github:numtide/flake-utils";
     flake-utils.url = "github:numtide/flake-utils";
 
-    # You can access packages and modules from different nixpkgs revs
-    # at the same time. Here's an working example:
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
 
     # Home manager
     home-manager = {
@@ -49,7 +46,7 @@
     lanzaboote.url = "github:nix-community/lanzaboote";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -81,23 +78,11 @@
     # Custom packages
     # Acessible through 'nix build', 'nix shell', etc
 
-    packages =
-      forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-
     # Formatter for the nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     # Your custom packages and modifications, exported as overlays
     overlays = import ./overlays {inherit inputs;};
-    # Reusable nixos modules you might want to export
-    # These are usually stuff you would upstream into nixpkgs
-    nixosModules = import ./modules/nixos;
-    # Reusable nix-darwin modules you might want to export
-    # These are usually stuff you would upstream into nix-darwin
-    darwinModules = import ./modules/darwin;
-    # Reusable home-manager modules you might want to export
-    # These are usually stuff you would upstream into home-manager
-    homeManagerModules = import ./modules/home-manager;
     templates = import ./templates;
     # templates = {
     #   node = {
@@ -132,6 +117,7 @@
               ];
             };
           }
+
         ];
       };
 
@@ -252,34 +238,3 @@
     };
   };
 }
-# homeConfigurations = {
-#   "dvtkrlbs@mba" = home-manager.lib.homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-#     extraSpecialArgs = {inherit inputs ;};
-#     modules = [
-#       ./home-manager/home-mba.nix
-#     ];
-#   };
-# };
-#   "david@beast" = home-manager.lib.homeManagerConfiguration {
-#     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-#     extraSpecialArgs = {inherit inputs outputs;};
-#     modules = [
-#       ./home-manager/home-beast.nix
-#     ];
-#   };
-# };
-#  }
-#// flake-utils.lib.eachSystem [
-#      "aarch64-darwin"
-#      "x86_64-linux"
-#      "x86_64-darwin"
-#    ] (system:
-#      let
-#        pkgs = import nixpkgs {inherit system; overlays = self.overlays; };
-#      in rec {
-#        packages = import ./pkgs pkgs;
-#      }
-#    );
-#}
-

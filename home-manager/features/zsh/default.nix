@@ -30,16 +30,10 @@
 
     profileExtra = ''
       ${lib.optionalString pkgs.stdenv.isDarwin ''
-        # Use path_helper
-        if [ -x /usr/libexec/path_helper ]; then
-          eval `/usr/libexec/path_helper -s`
-        fi
-        # Homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
       ''}
 
-      eval "$(ssh-agent -s)"
     '';
 
     # initExtra = ''
