@@ -8,22 +8,6 @@
   # inputs,
   ...
 }: {
-  # You can import other nix-darwin modules here
-  imports = [
-    # If you want to use modules your own flake exports (from modules/darwin):
-    # outputs.darwinModules.example
-
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-    # ./common/yabai.nix
-    # ./common/skhd.nix
-    # ./common/sketchybar.nix
-  ];
-
   nixpkgs = {
     # Configure your nixpkgs instance
     config = {
@@ -36,16 +20,6 @@
   };
 
   nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    # registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    # nixPath = ["/etc/nix/path"];
-
-    package = pkgs.nixVersions.stable;
-
     settings = {
       trusted-users = ["root" "dvtkrlbs"]; # For groups prepend @: "@admin"
       # Enable flakes and new 'nix' command
@@ -216,7 +190,7 @@
       "Numbers" = 409203825;
       "Pages" = 409201541;
       "The Unarchiver" = 425424353;
-      "Xcode" = 497799835;
+      #"Xcode" = 497799835;
       "Apple Configurator" = 1037126344;
       "Tampermonkey" = 1482490089;
       "Refined Github" = 1519867270;
@@ -263,15 +237,14 @@
 
   time.timeZone = "Europe/Istanbul";
 
-  fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     #iosevka-solai.packages.aarch64-darwin.default
-    # (nerdfonts.override {
-    #   fonts = [
-    #     "JetBrainsMono"
-    #   ];
-    # })
-    #    jetbrains-mono
+    (nerdfonts.override {
+       fonts = [
+         "JetBrainsMono"
+       ];
+     })
+     jetbrains-mono
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.

@@ -204,11 +204,13 @@
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
         modules = [
+          lix-module.nixosModules.default
           agenix.nixosModules.default
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
           # inputs.nixvim.homeManagerModules.nixvim
           {
+	    home-manager.backupFileExtension = "backup";	
             home-manager.users.dvtkrlbs = {
               imports = [
                 # inputs.nixvim.homeManagerModules.nixvim

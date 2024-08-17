@@ -10,21 +10,6 @@
   ...
 }: {
   # You can import other nix-darwin modules here
-  imports = [
-    # If you want to use modules your own flake exports (from modules/darwin):
-    # outputs.darwinModules.example
-
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-    # ./common/yabai.nix
-    # ./common/skhd.nix
-    # ./common/sketchybar.nix
-  ];
-
   nixpkgs = {
     # Configure your nixpkgs instance
     config = {
@@ -34,16 +19,6 @@
   };
 
   nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    # registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    # nixPath = ["/etc/nix/path"];
-
-    package = pkgs.nixVersions.git;
-
     settings = {
       trusted-users = ["root" "dvtkrlbs"]; # For groups prepend @: "@admin"
       # Enable flakes and new 'nix' command
