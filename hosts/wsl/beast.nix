@@ -132,13 +132,14 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     hashedPassword = "$y$j9T$GWjr88EDX6tqDYQ2t5IIa/$lsPUH69MyuzlGVI0H0m1Lr7.V6CqKwwrCIa19OoluH1";
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "10"];
     openssh = {
       authorizedKeys = {
         keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINHrPJLEwVpT2I7mfoqI+e1ShshWv+T7ab8Jb00hrXK6 dvt.tnhn.krlbs@icloud.com"];
       };
     };
   };
+  users.groups."10" = {};
 
   wsl = {
     enable = true;
