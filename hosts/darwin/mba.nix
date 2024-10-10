@@ -46,6 +46,7 @@
       speedtest-rs
       openssh
       cocoapods
+      qemu
       jetbrains.rust-rover
       jetbrains.goland
       jetbrains.clion
