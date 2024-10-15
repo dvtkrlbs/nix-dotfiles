@@ -204,7 +204,7 @@
         system = "aarch64-darwin";
         specialArgs = {inherit inputs;};
         modules = [
-          lix-module.nixosModules.default
+       #   lix-module.nixosModules.default
           agenix.nixosModules.default
           ./hosts/darwin/mba.nix
           inputs.home-manager.darwinModules.home-manager
