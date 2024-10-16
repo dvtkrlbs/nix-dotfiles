@@ -53,6 +53,8 @@
       jetbrains.datagrip
       jetbrains.idea-ultimate
       inputs.agenix.packages.aarch64-darwin.default
+      zig
+      zls
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
