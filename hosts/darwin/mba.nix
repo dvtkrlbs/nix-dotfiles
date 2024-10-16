@@ -56,6 +56,7 @@
       inputs.agenix.packages.aarch64-darwin.default
 
       inputs.zig.packages.aarch64-darwin.master-2024-10-15
+      zls
 
       # inputs.nixpkgs.os-specific.darwin.xcode.xcode_15_1
       (inputs.fenix.packages.aarch64-darwin.complete.withComponents [
